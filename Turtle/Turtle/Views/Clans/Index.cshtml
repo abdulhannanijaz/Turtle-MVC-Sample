@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Turtle.ORM.uspClanList_Result>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<hr />
+<div class="row">
+
+    @{ int i = 1; }
+    @foreach (var item in Model)
+    {
+
+        Html.RenderPartial("_ClanTile", item);
+        if ((i % 4) == 0)
+        {
+          @:</div>
+          @:<div class="row">
+        }
+        i++;
+
+    }
+</div>
+
+

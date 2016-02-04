@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TurtleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clan">
+    <Key>
+      <PropertyRef Name="ClanID" />
+    </Key>
+    <Property Name="ClanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="SymbolPic" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsEvil" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="ClanGUID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="EquipmentID" />
+    </Key>
+    <Property Name="EquipmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="Ninja">
+    <Key>
+      <PropertyRef Name="NinjaID" />
+    </Key>
+    <Property Name="NinjaID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClanID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="IsExperienced" Type="bit" />
+    <Property Name="IsAlive" Type="bit" />
+    <Property Name="NinjaGUID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="NinjaEquipment">
+    <Key>
+      <PropertyRef Name="NinjaEquipmentID" />
+    </Key>
+    <Property Name="NinjaEquipmentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EquipmentID" Type="int" />
+    <Property Name="NinjaID" Type="bigint" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="IsSpecial" Type="bit" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="NinjaEquipmentGUID" Type="uniqueidentifier" />
+  </EntityType>
+  <Association Name="FK_Ninja_Clan">
+    <End Role="Clan" Type="Self.Clan" Multiplicity="0..1" />
+    <End Role="Ninja" Type="Self.Ninja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clan">
+        <PropertyRef Name="ClanID" />
+      </Principal>
+      <Dependent Role="Ninja">
+        <PropertyRef Name="ClanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NinjaEquipment_Equipment">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+    <End Role="NinjaEquipment" Type="Self.NinjaEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="EquipmentID" />
+      </Principal>
+      <Dependent Role="NinjaEquipment">
+        <PropertyRef Name="EquipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NinjaEquipment_Ninja">
+    <End Role="Ninja" Type="Self.Ninja" Multiplicity="0..1" />
+    <End Role="NinjaEquipment" Type="Self.NinjaEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ninja">
+        <PropertyRef Name="NinjaID" />
+      </Principal>
+      <Dependent Role="NinjaEquipment">
+        <PropertyRef Name="NinjaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="uspClanCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan" />
+  <Function Name="uspClanDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
+    <Parameter Name="ClanGUID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="uspClanInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="SymbolPic" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsEvil" Type="bit" Mode="In" />
+    <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="uspClanList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan" />
+  <Function Name="uspClanUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="SymbolPic" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsEvil" Type="bit" Mode="In" />
+    <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+    <Parameter Name="ClanGUID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <EntityContainer Name="TurtleModelStoreContainer">
+    <EntitySet Name="Clan" EntityType="Self.Clan" Schema="Clan" store:Type="Tables" />
+    <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="CNF" store:Type="Tables" />
+    <EntitySet Name="Ninja" EntityType="Self.Ninja" Schema="Ninja" store:Type="Tables" />
+    <EntitySet Name="NinjaEquipment" EntityType="Self.NinjaEquipment" Schema="Ninja" store:Type="Tables" />
+    <AssociationSet Name="FK_Ninja_Clan" Association="Self.FK_Ninja_Clan">
+      <End Role="Clan" EntitySet="Clan" />
+      <End Role="Ninja" EntitySet="Ninja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NinjaEquipment_Equipment" Association="Self.FK_NinjaEquipment_Equipment">
+      <End Role="Equipment" EntitySet="Equipment" />
+      <End Role="NinjaEquipment" EntitySet="NinjaEquipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NinjaEquipment_Ninja" Association="Self.FK_NinjaEquipment_Ninja">
+      <End Role="Ninja" EntitySet="Ninja" />
+      <End Role="NinjaEquipment" EntitySet="NinjaEquipment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

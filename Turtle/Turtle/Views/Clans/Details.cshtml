@@ -1,0 +1,74 @@
+﻿@model Turtle.ORM.Clan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Clan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SymbolPic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SymbolPic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsEvil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsEvil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClanGUID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClanGUID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClanID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
