@@ -350,7 +350,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="uspClanSelect" FunctionName="TurtleModel.Store.uspClanSelect">
+          <FunctionImportMapping FunctionImportName="uspClanSelect" FunctionName="TurtleModel.Store.uspClanSelect" >
             <ResultMapping>
               <ComplexTypeMapping TypeName="TurtleModel.uspClanSelect_Result">
                 <ScalarProperty Name="Name" ColumnName="Name" />
