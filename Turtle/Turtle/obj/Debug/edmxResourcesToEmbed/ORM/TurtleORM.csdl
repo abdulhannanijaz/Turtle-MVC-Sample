@@ -130,6 +130,9 @@
       <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
       <Parameter Name="ClanGUID" Mode="In" Type="Guid" />
     </FunctionImport>
+    <FunctionImport Name="uspClanSelect1" ReturnType="Collection(TurtleModel.uspClanSelect1_Result)">
+      <Parameter Name="ClanGUID" Mode="In" Type="Guid" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="uspClanInsert_Result">
     <Property Type="Int32" Name="ClanID" Nullable="false" />
@@ -152,6 +155,16 @@
     <Property Type="Guid" Name="ClanGUID" Nullable="true" />
   </ComplexType>
   <ComplexType Name="uspClanSelect_Result">
+    <Property Type="Int32" Name="ClanID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="SymbolPic" Nullable="true" MaxLength="255" />
+    <Property Type="Boolean" Name="IsEvil" Nullable="true" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" />
+    <Property Type="Int64" Name="CreatedBy" Nullable="true" />
+    <Property Type="Guid" Name="ClanGUID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspClanSelect1_Result">
     <Property Type="Int32" Name="ClanID" Nullable="false" />
     <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
     <Property Type="String" Name="SymbolPic" Nullable="true" MaxLength="255" />

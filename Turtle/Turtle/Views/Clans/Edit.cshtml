@@ -28,8 +28,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SymbolPic, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img src=@Model.SymbolPic  class="img-responsive"/>
-                <input type="file" class="form-control" id="upload" name="upload" value="Click To Upload new image"/>
+               @Model.SymbolPic
+                <img src    =   @Model.SymbolPic  class="img-responsive"/>
+                <input type="file" class="form-control btn-warning " id="upload" name="upload" value="Click To Upload new image"/>
                 @Html.ValidationMessageFor(model => model.SymbolPic, "", new { @class = "text-danger" })
             </div>
         </div>

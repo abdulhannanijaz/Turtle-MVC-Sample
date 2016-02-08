@@ -102,6 +102,9 @@
           <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
         </Function>
         <Function Name="uspClanList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan" />
+        <Function Name="uspClanSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
+          <Parameter Name="ClanGUID" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="uspClanUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
           <Parameter Name="Name" Type="nvarchar" Mode="In" />
           <Parameter Name="SymbolPic" Type="nvarchar" Mode="In" />
@@ -261,6 +264,9 @@
             <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
             <Parameter Name="ClanGUID" Mode="In" Type="Guid" />
           </FunctionImport>
+          <FunctionImport Name="uspClanSelect1" ReturnType="Collection(TurtleModel.uspClanSelect1_Result)">
+            <Parameter Name="ClanGUID" Mode="In" Type="Guid" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="uspClanInsert_Result">
           <Property Type="Int32" Name="ClanID" Nullable="false" />
@@ -283,6 +289,16 @@
           <Property Type="Guid" Name="ClanGUID" Nullable="true" />
         </ComplexType>
         <ComplexType Name="uspClanSelect_Result">
+          <Property Type="Int32" Name="ClanID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SymbolPic" Nullable="true" MaxLength="255" />
+          <Property Type="Boolean" Name="IsEvil" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" />
+          <Property Type="Int64" Name="CreatedBy" Nullable="true" />
+          <Property Type="Guid" Name="ClanGUID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="uspClanSelect1_Result">
           <Property Type="Int32" Name="ClanID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="SymbolPic" Nullable="true" MaxLength="255" />
@@ -403,6 +419,20 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="uspClanUpdate" FunctionName="TurtleModel.Store.uspClanUpdate" />
+          <FunctionImportMapping FunctionImportName="uspClanSelect1" FunctionName="TurtleModel.Store.uspClanSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TurtleModel.uspClanSelect1_Result">
+                <ScalarProperty Name="ClanID" ColumnName="ClanID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
+                <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ClanGUID" ColumnName="ClanGUID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

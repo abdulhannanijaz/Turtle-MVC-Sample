@@ -97,6 +97,9 @@
     <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
   </Function>
   <Function Name="uspClanList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan" />
+  <Function Name="uspClanSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
+    <Parameter Name="ClanGUID" Type="uniqueidentifier" Mode="In" />
+  </Function>
   <Function Name="uspClanUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
     <Parameter Name="Name" Type="nvarchar" Mode="In" />
     <Parameter Name="SymbolPic" Type="nvarchar" Mode="In" />

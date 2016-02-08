@@ -105,5 +105,14 @@ namespace Turtle.ORM
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspClanUpdate", nameParameter, symbolPicParameter, isEvilParameter, createdByParameter, clanGUIDParameter);
         }
+    
+        public virtual ObjectResult<uspClanSelect1_Result> uspClanSelect1(Nullable<System.Guid> clanGUID)
+        {
+            var clanGUIDParameter = clanGUID.HasValue ?
+                new ObjectParameter("ClanGUID", clanGUID) :
+                new ObjectParameter("ClanGUID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanSelect1_Result>("uspClanSelect1", clanGUIDParameter);
+        }
     }
 }

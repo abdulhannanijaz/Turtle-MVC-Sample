@@ -76,7 +76,7 @@ namespace Turtle.Controllers
         }
 
         // GET: Clans/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Guid? id)
         {
             if (!id.HasValue)
             {

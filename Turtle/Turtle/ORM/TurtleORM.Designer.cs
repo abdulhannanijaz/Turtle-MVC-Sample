@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Hannan\Documents\Visual Studio 2015\Projects\Turtle\Turtle\ORM\TurtleORM.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\GITHUB\Turtle MVC Sample\Turtle\Turtle\ORM\TurtleORM.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
