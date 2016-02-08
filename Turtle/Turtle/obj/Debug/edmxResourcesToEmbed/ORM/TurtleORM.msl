@@ -22,9 +22,6 @@
             <ScalarProperty Name="SymbolPic" ParameterName="SymbolPic" />
             <ScalarProperty Name="Name" ParameterName="Name" />
           </InsertFunction>
-          <DeleteFunction FunctionName="TurtleModel.Store.uspClanDelete">
-            <ScalarProperty Name="ClanGUID" ParameterName="ClanGUID" />
-          </DeleteFunction>
           <UpdateFunction FunctionName="TurtleModel.Store.uspClanUpdate">
             <ScalarProperty Name="ClanGUID" ParameterName="ClanGUID" Version="Current" />
             <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" Version="Current" />
@@ -32,6 +29,9 @@
             <ScalarProperty Name="SymbolPic" ParameterName="SymbolPic" Version="Current" />
             <ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
           </UpdateFunction>
+          <DeleteFunction FunctionName="TurtleModel.Store.uspClanDelete">
+            <ScalarProperty Name="ClanGUID" ParameterName="ClanGUID" />
+          </DeleteFunction>
         </ModificationFunctionMapping>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -75,47 +75,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="uspClanCount" FunctionName="TurtleModel.Store.uspClanCount" />
-    <FunctionImportMapping FunctionImportName="uspClanDelete" FunctionName="TurtleModel.Store.uspClanDelete" />
-    <FunctionImportMapping FunctionImportName="uspClanInsert" FunctionName="TurtleModel.Store.uspClanInsert">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="TurtleModel.uspClanInsert_Result">
-          <ScalarProperty Name="ClanID" ColumnName="ClanID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
-          <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="ClanGUID" ColumnName="ClanGUID" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspClanList" FunctionName="TurtleModel.Store.uspClanList">
       <ResultMapping>
         <ComplexTypeMapping TypeName="TurtleModel.uspClanList_Result">
-          <ScalarProperty Name="ClanID" ColumnName="ClanID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
           <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="ClanGUID" ColumnName="ClanGUID" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspClanUpdate" FunctionName="TurtleModel.Store.uspClanUpdate" />
-    <FunctionImportMapping FunctionImportName="uspClanSelect1" FunctionName="TurtleModel.Store.uspClanSelect">
+    <FunctionImportMapping FunctionImportName="uspClanSelect" FunctionName="TurtleModel.Store.uspClanSelect">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="TurtleModel.uspClanSelect1_Result">
-          <ScalarProperty Name="ClanID" ColumnName="ClanID" />
+        <ComplexTypeMapping TypeName="TurtleModel.uspClanSelect_Result">
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
           <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="ClanGUID" ColumnName="ClanGUID" />
         </ComplexTypeMapping>
       </ResultMapping>

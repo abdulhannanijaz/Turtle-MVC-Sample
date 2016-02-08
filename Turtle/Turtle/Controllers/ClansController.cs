@@ -18,8 +18,11 @@ namespace Turtle.Controllers
         // GET: Clans
         public ActionResult Index()
         {
+            
             return View(db.uspClanList().ToList());
         }
+
+
 
         // GET: Clans/Details/5
         public ActionResult Details(int? id)
@@ -36,15 +39,7 @@ namespace Turtle.Controllers
             return View(clan);
         }
 
-        // GET: Clans/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Clans/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Name,IsEvil")] Clan clan, HttpPostedFileBase upload)
@@ -75,20 +70,35 @@ namespace Turtle.Controllers
             return View(clan);
         }
 
-        // GET: Clans/Edit/5
-        public ActionResult Edit(Guid? id)
+        // GET: Clans/Edit/GUID
+        public ActionResult Edit(Guid? guid)
         {
-            if (!id.HasValue)
+            if (!guid.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clan clan = db.Clan.Find(id);
+            var clan = db.uspClanSelect(guid.Value);
             if (clan == null)
             {
                 return HttpNotFound();
             }
             return View(clan);
         }
+
+        //// GET: Clans/Edit/5
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (!id.HasValue)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Clan clan = db.Clan.Find(id);
+        //    if (clan == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(clan);
+        //}
 
         // POST: Clans/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

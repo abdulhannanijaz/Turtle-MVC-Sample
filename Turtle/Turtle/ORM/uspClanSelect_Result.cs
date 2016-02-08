@@ -13,13 +13,9 @@ namespace Turtle.ORM
     
     public partial class uspClanSelect_Result
     {
-        public int ClanID { get; set; }
         public string Name { get; set; }
         public string SymbolPic { get; set; }
         public Nullable<bool> IsEvil { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public Nullable<long> CreatedBy { get; set; }
         public Nullable<System.Guid> ClanGUID { get; set; }
     }
 }

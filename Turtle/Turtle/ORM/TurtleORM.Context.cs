@@ -32,41 +32,6 @@ namespace Turtle.ORM
         public virtual DbSet<Ninja> Ninja { get; set; }
         public virtual DbSet<NinjaEquipment> NinjaEquipment { get; set; }
     
-        public virtual ObjectResult<Nullable<int>> uspClanCount()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("uspClanCount");
-        }
-    
-        public virtual int uspClanDelete(Nullable<System.Guid> clanGUID)
-        {
-            var clanGUIDParameter = clanGUID.HasValue ?
-                new ObjectParameter("ClanGUID", clanGUID) :
-                new ObjectParameter("ClanGUID", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspClanDelete", clanGUIDParameter);
-        }
-    
-        public virtual ObjectResult<uspClanInsert_Result> uspClanInsert(string name, string symbolPic, Nullable<bool> isEvil, Nullable<long> createdBy)
-        {
-            var nameParameter = name != null ?
-                new ObjectParameter("Name", name) :
-                new ObjectParameter("Name", typeof(string));
-    
-            var symbolPicParameter = symbolPic != null ?
-                new ObjectParameter("SymbolPic", symbolPic) :
-                new ObjectParameter("SymbolPic", typeof(string));
-    
-            var isEvilParameter = isEvil.HasValue ?
-                new ObjectParameter("IsEvil", isEvil) :
-                new ObjectParameter("IsEvil", typeof(bool));
-    
-            var createdByParameter = createdBy.HasValue ?
-                new ObjectParameter("CreatedBy", createdBy) :
-                new ObjectParameter("CreatedBy", typeof(long));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanInsert_Result>("uspClanInsert", nameParameter, symbolPicParameter, isEvilParameter, createdByParameter);
-        }
-    
         public virtual ObjectResult<uspClanList_Result> uspClanList()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanList_Result>("uspClanList");
@@ -79,40 +44,6 @@ namespace Turtle.ORM
                 new ObjectParameter("ClanGUID", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanSelect_Result>("uspClanSelect", clanGUIDParameter);
-        }
-    
-        public virtual int uspClanUpdate(string name, string symbolPic, Nullable<bool> isEvil, Nullable<long> createdBy, Nullable<System.Guid> clanGUID)
-        {
-            var nameParameter = name != null ?
-                new ObjectParameter("Name", name) :
-                new ObjectParameter("Name", typeof(string));
-    
-            var symbolPicParameter = symbolPic != null ?
-                new ObjectParameter("SymbolPic", symbolPic) :
-                new ObjectParameter("SymbolPic", typeof(string));
-    
-            var isEvilParameter = isEvil.HasValue ?
-                new ObjectParameter("IsEvil", isEvil) :
-                new ObjectParameter("IsEvil", typeof(bool));
-    
-            var createdByParameter = createdBy.HasValue ?
-                new ObjectParameter("CreatedBy", createdBy) :
-                new ObjectParameter("CreatedBy", typeof(long));
-    
-            var clanGUIDParameter = clanGUID.HasValue ?
-                new ObjectParameter("ClanGUID", clanGUID) :
-                new ObjectParameter("ClanGUID", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspClanUpdate", nameParameter, symbolPicParameter, isEvilParameter, createdByParameter, clanGUIDParameter);
-        }
-    
-        public virtual ObjectResult<uspClanSelect1_Result> uspClanSelect1(Nullable<System.Guid> clanGUID)
-        {
-            var clanGUIDParameter = clanGUID.HasValue ?
-                new ObjectParameter("ClanGUID", clanGUID) :
-                new ObjectParameter("ClanGUID", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanSelect1_Result>("uspClanSelect1", clanGUIDParameter);
         }
     }
 }

@@ -207,13 +207,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TurtleORM.edmx</DependentUpon>
     </Compile>
-    <Compile Include="ORM\uspClanInsert_Result.cs">
-      <DependentUpon>TurtleORM.tt</DependentUpon>
-    </Compile>
     <Compile Include="ORM\uspClanList_Result.cs">
-      <DependentUpon>TurtleORM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ORM\uspClanSelect1_Result.cs">
       <DependentUpon>TurtleORM.tt</DependentUpon>
     </Compile>
     <Compile Include="ORM\uspClanSelect_Result.cs">
