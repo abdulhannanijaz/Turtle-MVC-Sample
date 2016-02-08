@@ -77,7 +77,7 @@ namespace Turtle.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var clan = db.uspClanSelect(guid.Value);
+            var clan = db.uspClanSelect(guid.Value).FirstOrDefault();
             if (clan == null)
             {
                 return HttpNotFound();
