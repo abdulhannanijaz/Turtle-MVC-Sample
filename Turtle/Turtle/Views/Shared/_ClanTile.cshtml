@@ -13,8 +13,8 @@
             <a href=@Url.Action("Delete", new { guid = Model.ClanGUID })>
                 <span class="glyphicon glyphicon-remove text-danger"></span>
             </a>
-        </div>
-        <img src=@Model.SymbolPic alt=@Model.Name class="img-responsive" />      
+        </div> 
+        <img src=@Url.Content("~/images/"+Model.SymbolPic) alt=@Model.Name class="img-responsive" />      
         <div class="caption">
             <h2 class="lead text-center text-info">
                 @Model.Name

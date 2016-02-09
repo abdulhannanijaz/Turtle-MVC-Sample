@@ -23,23 +23,13 @@ namespace Turtle.Controllers
         }
 
 
-
-        // GET: Clans/Details/5
-        public ActionResult Details(int? id)
+        // GET: Clans/Create
+        public ActionResult Create()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Clan clan = db.Clan.Find(id);
-            if (clan == null)
-            {
-                return HttpNotFound();
-            }
-            return View(clan);
+            return View();
         }
 
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Name,IsEvil")] Clan clan, HttpPostedFileBase upload)
@@ -51,7 +41,7 @@ namespace Turtle.Controllers
                     var imagename = Guid.NewGuid().ToString()+Path.GetExtension(upload.FileName);
                     var imageSavePath = Path.Combine(Server.MapPath("~/images"), imagename);
                     upload.SaveAs(imageSavePath);
-                    clan.SymbolPic = Url.Content("images/"+imagename);
+                    clan.SymbolPic = imagename;
                 }
                 else
                 {
@@ -77,7 +67,7 @@ namespace Turtle.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var clan = db.uspClanSelect(guid.Value).FirstOrDefault();
+            var clan = db.uspClanSelect(guid.Value).SingleOrDefault();
             if (clan == null)
             {
                 return HttpNotFound();
@@ -105,17 +95,26 @@ namespace Turtle.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Name,IsEvil,ClanGUID")] Clan clan, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "Name,IsEvil,SymbolPic,ClanGUID")] Clan clan, HttpPostedFileBase upload)
         {
             if (upload != null && upload.ContentLength > 0)
             {
                 if (IsValidImage(upload.ContentType))
                 {
-                    var imagename = Guid.NewGuid().ToString() + Path.GetExtension(upload.FileName);
+                    //To save New Image only
+                    //var imagename = Guid.NewGuid().ToString() + Path.GetExtension(upload.FileName);
+                    //var imageSavePath = Path.Combine(Server.MapPath("~/images"), imagename);
+                    //upload.SaveAs(imageSavePath);
+                    ////To load in view
+                    //clan.SymbolPic = Url.Content("images/"+imagename);
+
+
+                    //To save New Image on old image
+                    var imagename = clan.SymbolPic;
                     var imageSavePath = Path.Combine(Server.MapPath("~/images"), imagename);
                     upload.SaveAs(imageSavePath);
                     //To load in view
-                    clan.SymbolPic = Url.Content("images/"+imagename);
+                   // clan.SymbolPic = Url.Content("images/" + imagename);
                 }
                 else
                 {
@@ -128,6 +127,21 @@ namespace Turtle.Controllers
                 db.Entry(clan).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            return View(clan);
+        }
+
+        // GET: Clans/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Clan clan = db.Clan.Find(id);
+            if (clan == null)
+            {
+                return HttpNotFound();
             }
             return View(clan);
         }

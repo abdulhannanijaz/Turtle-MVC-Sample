@@ -16,21 +16,21 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ClanGUID)
+        @Html.HiddenFor(model => model.SymbolPic)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control",@type="text" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.SymbolPic, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-               @Model.SymbolPic
-                <img src    =   @Model.SymbolPic  class="img-responsive"/>
-                <input type="file" class="form-control btn-warning " id="upload" name="upload" value="Click To Upload new image"/>
+            <div class="col-md-10 thumbnail">
+                <img src=@Url.Content("~/images/"+Model.SymbolPic) class="img-responsive" />           
+                <input type="file" class="form-control-file" name="upload" value="Click To Upload new image"/>
                 @Html.ValidationMessageFor(model => model.SymbolPic, "", new { @class = "text-danger" })
             </div>
         </div>
