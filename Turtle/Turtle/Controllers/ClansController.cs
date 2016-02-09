@@ -132,13 +132,27 @@ namespace Turtle.Controllers
         }
 
         // GET: Clans/Details/5
-        public ActionResult Details(int? id)
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Clan clan = db.Clan.Find(id);
+        //    if (clan == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(clan);
+        //}
+
+        public ActionResult Details(Guid? guid)
         {
-            if (id == null)
+            if (!guid.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clan clan = db.Clan.Find(id);
+            var clan = db.uspClanSelect(guid.Value).SingleOrDefault();
             if (clan == null)
             {
                 return HttpNotFound();
@@ -147,13 +161,13 @@ namespace Turtle.Controllers
         }
 
         // GET: Clans/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(Guid? guid)
         {
-            if (id == null)
+            if (!guid.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clan clan = db.Clan.Find(id);
+            var clan = db.uspClanSelect(guid.Value).SingleOrDefault();
             if (clan == null)
             {
                 return HttpNotFound();
@@ -164,11 +178,13 @@ namespace Turtle.Controllers
         // POST: Clans/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid guid)
         {
-            Clan clan = db.Clan.Find(id);
-            db.Clan.Remove(clan);
-            db.SaveChanges();
+            //Clan clan = db.Clan.Find(id);
+            //db.Clan.Remove(clan);
+            //db.SaveChanges();
+            db.Database.ExecuteSqlCommand("Exec Clan.uspClanDelete @ClanGUID", guid);
+
             return RedirectToAction("Index");
         }
 

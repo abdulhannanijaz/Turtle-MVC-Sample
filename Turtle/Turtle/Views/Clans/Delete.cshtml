@@ -1,4 +1,4 @@
-﻿@model Turtle.ORM.Clan
+﻿@model Turtle.ORM.uspClanSelect_Result
 
 @{
     ViewBag.Title = "Delete";
@@ -35,37 +35,10 @@
             @Html.DisplayFor(model => model.IsEvil)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
+       
 
-        <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ClanGUID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ClanGUID)
-        </dd>
+   
+@Html.HiddenFor(model => model.ClanGUID)
 
     </dl>
 
