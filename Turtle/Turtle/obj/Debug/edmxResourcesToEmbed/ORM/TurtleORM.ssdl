@@ -86,7 +86,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="uspClanCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan" />
   <Function Name="uspClanDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
     <Parameter Name="ClanGUID" Type="uniqueidentifier" Mode="In" />
   </Function>
@@ -96,7 +95,6 @@
     <Parameter Name="IsEvil" Type="bit" Mode="In" />
     <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
   </Function>
-  <Function Name="uspClanList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan" />
   <Function Name="uspClanSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
     <Parameter Name="ClanGUID" Type="uniqueidentifier" Mode="In" />
   </Function>

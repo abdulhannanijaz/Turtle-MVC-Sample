@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Turtle.Models;
 using Turtle.ORM;
 
 namespace Turtle.Controllers
@@ -14,12 +16,13 @@ namespace Turtle.Controllers
     public class ClansController : Controller
     {
         private TurtleEntities db = new TurtleEntities();
+        private PictureModel image = new PictureModel(); 
 
         // GET: Clans
         public ActionResult Index()
         {
             
-            return View(db.uspClanList().ToList());
+            return View(db.uspClanSelect(null).ToList());
         }
 
 
@@ -38,7 +41,8 @@ namespace Turtle.Controllers
             {
                 if (IsValidImage(upload.ContentType))
                 {
-                    var imagename = Guid.NewGuid().ToString()+Path.GetExtension(upload.FileName);
+
+                    var imagename = image.GetImageName(clan.SymbolPic, Path.GetExtension(upload.FileName));
                     var imageSavePath = Path.Combine(Server.MapPath("~/images"), imagename);
                     upload.SaveAs(imageSavePath);
                     clan.SymbolPic = imagename;
@@ -75,21 +79,6 @@ namespace Turtle.Controllers
             return View(clan);
         }
 
-        //// GET: Clans/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (!id.HasValue)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Clan clan = db.Clan.Find(id);
-        //    if (clan == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(clan);
-        //}
-
         // POST: Clans/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -101,20 +90,12 @@ namespace Turtle.Controllers
             {
                 if (IsValidImage(upload.ContentType))
                 {
-                    //To save New Image only
-                    //var imagename = Guid.NewGuid().ToString() + Path.GetExtension(upload.FileName);
-                    //var imageSavePath = Path.Combine(Server.MapPath("~/images"), imagename);
-                    //upload.SaveAs(imageSavePath);
-                    ////To load in view
-                    //clan.SymbolPic = Url.Content("images/"+imagename);
-
-
+                   
                     //To save New Image on old image
-                    var imagename = clan.SymbolPic;
+                    string imagename = image.GetImageName(clan.SymbolPic, Path.GetExtension(upload.FileName));
                     var imageSavePath = Path.Combine(Server.MapPath("~/images"), imagename);
                     upload.SaveAs(imageSavePath);
-                    //To load in view
-                   // clan.SymbolPic = Url.Content("images/" + imagename);
+                    clan.SymbolPic = imagename;
                 }
                 else
                 {
@@ -131,20 +112,6 @@ namespace Turtle.Controllers
             return View(clan);
         }
 
-        // GET: Clans/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Clan clan = db.Clan.Find(id);
-        //    if (clan == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(clan);
-        //}
 
         public ActionResult Details(Guid? guid)
         {
@@ -180,10 +147,13 @@ namespace Turtle.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid guid)
         {
-            //Clan clan = db.Clan.Find(id);
-            //db.Clan.Remove(clan);
-            //db.SaveChanges();
-            db.Database.ExecuteSqlCommand("Exec Clan.uspClanDelete @ClanGUID", guid);
+            Clan clan = db.Clan.SingleOrDefault(m=>m.ClanGUID == guid );
+            if (clan == null)
+            {
+                return HttpNotFound();
+            }
+            db.Clan.Remove(clan);
+            db.SaveChanges();
 
             return RedirectToAction("Index");
         }

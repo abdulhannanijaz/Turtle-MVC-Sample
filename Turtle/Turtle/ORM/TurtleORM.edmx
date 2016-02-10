@@ -91,7 +91,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="uspClanCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan" />
         <Function Name="uspClanDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
           <Parameter Name="ClanGUID" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -101,7 +100,6 @@
           <Parameter Name="IsEvil" Type="bit" Mode="In" />
           <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
         </Function>
-        <Function Name="uspClanList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan" />
         <Function Name="uspClanSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
           <Parameter Name="ClanGUID" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -243,17 +241,26 @@
             <End Role="Ninja" EntitySet="Ninja" />
             <End Role="NinjaEquipment" EntitySet="NinjaEquipment" />
           </AssociationSet>
-          <FunctionImport Name="uspClanList" ReturnType="Collection(TurtleModel.uspClanList_Result)" />
+          <FunctionImport Name="uspClanDelete">
+          <Parameter Name="ClanGUID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="uspClanInsert">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="SymbolPic" Mode="In" Type="String" />
+            <Parameter Name="IsEvil" Mode="In" Type="Boolean" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="uspClanUpdate">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="SymbolPic" Mode="In" Type="String" />
+            <Parameter Name="IsEvil" Mode="In" Type="Boolean" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+            <Parameter Name="ClanGUID" Mode="In" Type="Guid" />
+          </FunctionImport>
           <FunctionImport Name="uspClanSelect" ReturnType="Collection(TurtleModel.uspClanSelect_Result)">
             <Parameter Name="ClanGUID" Mode="In" Type="Guid" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="uspClanList_Result">
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="SymbolPic" Nullable="true" MaxLength="255" />
-          <Property Type="Boolean" Name="IsEvil" Nullable="true" />
-          <Property Type="Guid" Name="ClanGUID" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="uspClanSelect_Result">
           <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="SymbolPic" Nullable="true" MaxLength="255" />
@@ -340,17 +347,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="uspClanList" FunctionName="TurtleModel.Store.uspClanList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TurtleModel.uspClanList_Result">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
-                <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
-                <ScalarProperty Name="ClanGUID" ColumnName="ClanGUID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="uspClanSelect" FunctionName="TurtleModel.Store.uspClanSelect" >
+          <FunctionImportMapping FunctionImportName="uspClanDelete" FunctionName="TurtleModel.Store.uspClanDelete" />
+          <FunctionImportMapping FunctionImportName="uspClanInsert" FunctionName="TurtleModel.Store.uspClanInsert" />
+          <FunctionImportMapping FunctionImportName="uspClanUpdate" FunctionName="TurtleModel.Store.uspClanUpdate" />
+          <FunctionImportMapping FunctionImportName="uspClanSelect" FunctionName="TurtleModel.Store.uspClanSelect">
             <ResultMapping>
               <ComplexTypeMapping TypeName="TurtleModel.uspClanSelect_Result">
                 <ScalarProperty Name="Name" ColumnName="Name" />

@@ -179,6 +179,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\PictureModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="ORM\Clan.cs">
       <DependentUpon>TurtleORM.tt</DependentUpon>
@@ -206,9 +207,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TurtleORM.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="ORM\uspClanList_Result.cs">
-      <DependentUpon>TurtleORM.tt</DependentUpon>
     </Compile>
     <Compile Include="ORM\uspClanSelect_Result.cs">
       <DependentUpon>TurtleORM.tt</DependentUpon>
