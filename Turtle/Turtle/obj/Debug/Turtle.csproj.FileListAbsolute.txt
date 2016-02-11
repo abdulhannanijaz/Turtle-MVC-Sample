@@ -165,4 +165,8 @@ E:\GITHUB\Turtle MVC Sample\Turtle\Turtle\bin\Microsoft.Owin.Security.Twitter.xm
 E:\GITHUB\Turtle MVC Sample\Turtle\Turtle\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\GITHUB\Turtle MVC Sample\Turtle\Turtle\obj\Debug\Turtle.dll
 E:\GITHUB\Turtle MVC Sample\Turtle\Turtle\obj\Debug\Turtle.pdb
+E:\GITHUB\Turtle MVC Sample\Turtle\Turtle\bin\PagedList.dll
+E:\GITHUB\Turtle MVC Sample\Turtle\Turtle\bin\PagedList.Mvc.dll
+E:\GITHUB\Turtle MVC Sample\Turtle\Turtle\bin\PagedList.xml
+E:\GITHUB\Turtle MVC Sample\Turtle\Turtle\bin\PagedList.Mvc.xml
 E:\GITHUB\Turtle MVC Sample\Turtle\Turtle\obj\Debug\Turtle.csprojResolveAssemblyReference.cache

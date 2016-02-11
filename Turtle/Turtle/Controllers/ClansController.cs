@@ -22,7 +22,7 @@ namespace Turtle.Controllers
         public ActionResult Index()
         {
             
-            return View(db.uspClanSelect(null).ToList());
+            return View(db.uspClanList().ToList());
         }
 
 

@@ -62,6 +62,20 @@ namespace Turtle.ORM
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspClanInsert", nameParameter, symbolPicParameter, isEvilParameter, createdByParameter);
         }
     
+        public virtual ObjectResult<uspClanList_Result> uspClanList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanList_Result>("uspClanList");
+        }
+    
+        public virtual ObjectResult<uspClanSelect_Result> uspClanSelect(Nullable<System.Guid> clanGUID)
+        {
+            var clanGUIDParameter = clanGUID.HasValue ?
+                new ObjectParameter("ClanGUID", clanGUID) :
+                new ObjectParameter("ClanGUID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanSelect_Result>("uspClanSelect", clanGUIDParameter);
+        }
+    
         public virtual int uspClanUpdate(string name, string symbolPic, Nullable<bool> isEvil, Nullable<long> createdBy, Nullable<System.Guid> clanGUID)
         {
             var nameParameter = name != null ?
@@ -85,15 +99,6 @@ namespace Turtle.ORM
                 new ObjectParameter("ClanGUID", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspClanUpdate", nameParameter, symbolPicParameter, isEvilParameter, createdByParameter, clanGUIDParameter);
-        }
-    
-        public virtual ObjectResult<uspClanSelect_Result> uspClanSelect(Nullable<System.Guid> clanGUID)
-        {
-            var clanGUIDParameter = clanGUID.HasValue ?
-                new ObjectParameter("ClanGUID", clanGUID) :
-                new ObjectParameter("ClanGUID", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanSelect_Result>("uspClanSelect", clanGUIDParameter);
         }
     }
 }

@@ -77,10 +77,9 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="uspClanDelete" FunctionName="TurtleModel.Store.uspClanDelete" />
     <FunctionImportMapping FunctionImportName="uspClanInsert" FunctionName="TurtleModel.Store.uspClanInsert" />
-    <FunctionImportMapping FunctionImportName="uspClanUpdate" FunctionName="TurtleModel.Store.uspClanUpdate" />
-    <FunctionImportMapping FunctionImportName="uspClanSelect" FunctionName="TurtleModel.Store.uspClanSelect">
+    <FunctionImportMapping FunctionImportName="uspClanList" FunctionName="TurtleModel.Store.uspClanList">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="TurtleModel.uspClanSelect_Result">
+        <ComplexTypeMapping TypeName="TurtleModel.uspClanList_Result">
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
           <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
@@ -88,5 +87,20 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspClanSelect" FunctionName="TurtleModel.Store.uspClanSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TurtleModel.uspClanSelect_Result">
+          <ScalarProperty Name="ClanID" ColumnName="ClanID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
+          <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ClanGUID" ColumnName="ClanGUID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspClanUpdate" FunctionName="TurtleModel.Store.uspClanUpdate" />
   </EntityContainerMapping>
 </Mapping>
