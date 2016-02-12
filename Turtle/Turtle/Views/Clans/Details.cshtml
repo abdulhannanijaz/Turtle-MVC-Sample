@@ -5,70 +5,74 @@
 }
 
 <h2>Details</h2>
+<div class="row">
+    <div>
+        <h4>Clan</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-<div>
-    <h4>Clan</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SymbolPic)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SymbolPic)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SymbolPic)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.SymbolPic)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IsEvil)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsEvil)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IsEvil)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsEvil)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IsDeleted)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ClanGUID)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ClanGUID)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ClanGUID)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ClanGUID)
-        </dd>
+        </dl>
+    </div>
+   
+        <div class="btn-group">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ClanGUID }, htmlAttributes: new { @class = "btn btn-warning" })
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ClanGUID }, htmlAttributes: new { @class = "btn btn-danger" })
+            @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
+        </div>
 
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ClanID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

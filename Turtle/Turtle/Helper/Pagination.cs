@@ -19,14 +19,15 @@ namespace Turtle.Helper
 
         public int GetPageCount(int TotalItems)
         {
-            PageCount = TotalItems % ItemCountPerPage;
+            PageCount = TotalItems / ItemCountPerPage;
             //To handlke 1 backward page as page one will have all the records 
             return PageCount;
         }
 
         public int GetOffsetNumber(int? PageNumber)
         {
-            Offset = (PageNumber ?? 0) * ItemCountPerPage;
+            //-1 to handle number of loop onfront end
+            Offset = ((PageNumber ?? 1)-1) * ItemCountPerPage;
             return Offset;
         }
 

@@ -1,16 +1,18 @@
 ﻿@model IEnumerable<Turtle.ORM.uspClanList_Result>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Clans List";
     int? totalpages = ViewBag.totalpages;
     int tilecount = 1;
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+<h1 class="lead text-center text-primary">Clans List</h1>
+<a href=@Url.Action("Create","Clans") class="btn btn-primary">
+    New Clan
+    <span class="glyphicon glyphicon-plus"></span>
+</a>
 <hr />
 <div class="row">
 
@@ -22,6 +24,7 @@
         if ((tilecount % 4) == 0)
         {
           @:</div>
+          @:<br />
           @:<div class="row">
         }
         tilecount++;
@@ -29,15 +32,16 @@
     }
 </div>
 
+
 <hr/>
 <div class="row">
     @if (totalpages.HasValue)
     {
         <ul class="pagination">
-            @for (int currentpage = 0; currentpage < totalpages.Value; currentpage++)
+            @for (int currentpage = 1; currentpage < totalpages.Value; currentpage++)
             {
-                <li class="active">
-                    <a href=@Url.Action("Index", "Clans", new { currentpage = currentpage })> @(currentpage+1)</a>
+                <li>
+                    <a href=@Url.Action("Index", "Clans", new { currentpage = currentpage }) > @currentpage</a>
                 </li>
             }
 
