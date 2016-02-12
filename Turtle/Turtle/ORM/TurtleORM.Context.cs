@@ -62,9 +62,17 @@ namespace Turtle.ORM
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspClanInsert", nameParameter, symbolPicParameter, isEvilParameter, createdByParameter);
         }
     
-        public virtual ObjectResult<uspClanList_Result> uspClanList()
+        public virtual ObjectResult<uspClanList_Result> uspClanList(Nullable<int> offset, Nullable<int> rows)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanList_Result>("uspClanList");
+            var offsetParameter = offset.HasValue ?
+                new ObjectParameter("Offset", offset) :
+                new ObjectParameter("Offset", typeof(int));
+    
+            var rowsParameter = rows.HasValue ?
+                new ObjectParameter("Rows", rows) :
+                new ObjectParameter("Rows", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanList_Result>("uspClanList", offsetParameter, rowsParameter);
         }
     
         public virtual ObjectResult<uspClanSelect_Result> uspClanSelect(Nullable<System.Guid> clanGUID)
@@ -99,6 +107,11 @@ namespace Turtle.ORM
                 new ObjectParameter("ClanGUID", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspClanUpdate", nameParameter, symbolPicParameter, isEvilParameter, createdByParameter, clanGUIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> uspClanCount()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("uspClanCount");
         }
     }
 }

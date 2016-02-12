@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Turtle.Models
+namespace Turtle.Helper
 {
-    public class PictureModel
+    public class Picture
     {
         private string ImageName { get; set; }
 
@@ -20,5 +20,23 @@ namespace Turtle.Models
 
             return ImageName;
         }
+
+        //To validate Image
+        public bool IsValidImage(string contentType)
+        {
+            var validImageTypes = new string[]
+            {
+                "image/gif",
+                "image/jpeg",
+                "image/pjpeg",
+                "image/png"
+            };
+
+            if (validImageTypes.Contains(contentType))
+                return true;
+
+            return false;
+        }
+
     }
 }

@@ -102,5 +102,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspClanUpdate" FunctionName="TurtleModel.Store.uspClanUpdate" />
+    <FunctionImportMapping FunctionImportName="uspClanCount" FunctionName="TurtleModel.Store.uspClanCount" />
   </EntityContainerMapping>
 </Mapping>

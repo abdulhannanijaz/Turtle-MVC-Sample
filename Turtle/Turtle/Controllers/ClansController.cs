@@ -8,21 +8,30 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Turtle.Models;
+using Turtle.Helper;
 using Turtle.ORM;
+
 
 namespace Turtle.Controllers
 {
     public class ClansController : Controller
     {
         private TurtleEntities db = new TurtleEntities();
-        private PictureModel image = new PictureModel(); 
+
+        private Picture picture = new Picture();
+
+        private Pagination pagination = new Pagination();
+
 
         // GET: Clans
-        public ActionResult Index()
+        public ActionResult Index(int? currentpage)
         {
-            
-            return View(db.uspClanList().ToList());
+                             
+            ViewBag.totalpages = pagination.GetPageCount(db.uspClanCount().FirstOrDefault() ?? 0);
+
+            var ClanList = db.uspClanList(pagination.GetOffsetNumber(currentpage), pagination.ItemCountPerPage);
+
+            return View(ClanList);
         }
 
 
@@ -39,10 +48,10 @@ namespace Turtle.Controllers
         {
             if (upload != null && upload.ContentLength > 0)
             {
-                if (IsValidImage(upload.ContentType))
+                if (picture.IsValidImage(upload.ContentType))
                 {
 
-                    var imagename = image.GetImageName(clan.SymbolPic, Path.GetExtension(upload.FileName));
+                    var imagename = picture.GetImageName(clan.SymbolPic, Path.GetExtension(upload.FileName));
                     var imageSavePath = Path.Combine(Server.MapPath("~/images"), imagename);
                     upload.SaveAs(imageSavePath);
                     clan.SymbolPic = imagename;
@@ -88,11 +97,11 @@ namespace Turtle.Controllers
         {
             if (upload != null && upload.ContentLength > 0)
             {
-                if (IsValidImage(upload.ContentType))
+                if (picture.IsValidImage(upload.ContentType))
                 {
                    
                     //To save New Image on old image
-                    string imagename = image.GetImageName(clan.SymbolPic, Path.GetExtension(upload.FileName));
+                    string imagename = picture.GetImageName(clan.SymbolPic, Path.GetExtension(upload.FileName));
                     var imageSavePath = Path.Combine(Server.MapPath("~/images"), imagename);
                     upload.SaveAs(imageSavePath);
                     clan.SymbolPic = imagename;
@@ -158,32 +167,23 @@ namespace Turtle.Controllers
             return RedirectToAction("Index");
         }
 
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
                 db.Dispose();
+                //Remove other objects also;
+                picture = null;
+                pagination = null;
+
             }
             base.Dispose(disposing);
         }
 
 
-        //To validate Image
-        private bool IsValidImage(string contentType)
-        {
-            var validImageTypes = new string[]
-            {
-                "image/gif",
-                "image/jpeg",
-                "image/pjpeg",
-                "image/png"
-            };
-
-            if (validImageTypes.Contains(contentType))
-                return true;
-
-            return false;
-        }
+     
+       
 
     }
 }

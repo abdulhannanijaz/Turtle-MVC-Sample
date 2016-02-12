@@ -118,7 +118,10 @@
       <Parameter Name="IsEvil" Mode="In" Type="Boolean" />
       <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
     </FunctionImport>
-    <FunctionImport Name="uspClanList" ReturnType="Collection(TurtleModel.uspClanList_Result)" />
+    <FunctionImport Name="uspClanList" ReturnType="Collection(TurtleModel.uspClanList_Result)">
+      <Parameter Name="Offset" Mode="In" Type="Int32" />
+      <Parameter Name="Rows" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="uspClanSelect" ReturnType="Collection(TurtleModel.uspClanSelect_Result)">
       <Parameter Name="ClanGUID" Mode="In" Type="Guid" />
     </FunctionImport>
@@ -129,13 +132,8 @@
       <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
       <Parameter Name="ClanGUID" Mode="In" Type="Guid" />
     </FunctionImport>
+    <FunctionImport Name="uspClanCount" ReturnType="Collection(Int32)" />
   </EntityContainer>
-  <ComplexType Name="uspClanList_Result">
-    <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-    <Property Type="String" Name="SymbolPic" Nullable="true" MaxLength="255" />
-    <Property Type="Boolean" Name="IsEvil" Nullable="true" />
-    <Property Type="Guid" Name="ClanGUID" Nullable="true" />
-  </ComplexType>
   <ComplexType Name="uspClanSelect_Result">
     <Property Type="Int32" Name="ClanID" Nullable="false" />
     <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
@@ -144,6 +142,12 @@
     <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
     <Property Type="DateTime" Name="CreatedOn" Nullable="true" />
     <Property Type="Int64" Name="CreatedBy" Nullable="true" />
+    <Property Type="Guid" Name="ClanGUID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="uspClanList_Result">
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="SymbolPic" Nullable="true" MaxLength="255" />
+    <Property Type="Boolean" Name="IsEvil" Nullable="true" />
     <Property Type="Guid" Name="ClanGUID" Nullable="true" />
   </ComplexType>
 </Schema>

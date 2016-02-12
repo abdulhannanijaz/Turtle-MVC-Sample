@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Index";
+    int? totalpages = ViewBag.totalpages;
+    int tilecount = 1;
 }
 
 <h2>Index</h2>
@@ -12,19 +14,36 @@
 <hr />
 <div class="row">
 
-    @{ int i = 1; }
+   
     @foreach (var item in Model)
     {
 
         Html.RenderPartial("_ClanTile", item);
-        if ((i % 4) == 0)
+        if ((tilecount % 4) == 0)
         {
           @:</div>
           @:<div class="row">
         }
-        i++;
+        tilecount++;
 
     }
+</div>
+
+<hr/>
+<div class="row">
+    @if (totalpages.HasValue)
+    {
+        <ul class="pagination">
+            @for (int currentpage = 0; currentpage < totalpages.Value; currentpage++)
+            {
+                <li class="active">
+                    <a href=@Url.Action("Index", "Clans", new { currentpage = currentpage })> @(currentpage+1)</a>
+                </li>
+            }
+
+        </ul>
+    }
+
 </div>
 
 
