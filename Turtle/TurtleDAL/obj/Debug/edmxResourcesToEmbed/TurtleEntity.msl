@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TurtleModelStoreContainer" CdmEntityContainer="TurtleEntities">
+    <EntitySetMapping Name="Clan">
+      <EntityTypeMapping TypeName="TurtleModel.Clan">
+        <MappingFragment StoreEntitySet="Clan">
+          <ScalarProperty Name="ClanID" ColumnName="ClanID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
+          <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ClanGUID" ColumnName="ClanGUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="TurtleModel.Clan">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="TurtleModel.Store.uspClanInsert">
+            <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+            <ScalarProperty Name="IsEvil" ParameterName="IsEvil" />
+            <ScalarProperty Name="SymbolPic" ParameterName="SymbolPic" />
+            <ScalarProperty Name="Name" ParameterName="Name" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="TurtleModel.Store.uspClanSelect">
+            <ScalarProperty Name="ClanGUID" ParameterName="ClanGUID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="TurtleModel.Store.uspClanDelete">
+            <ScalarProperty Name="ClanGUID" ParameterName="ClanGUID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipment">
+      <EntityTypeMapping TypeName="TurtleModel.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ninja">
+      <EntityTypeMapping TypeName="TurtleModel.Ninja">
+        <MappingFragment StoreEntitySet="Ninja">
+          <ScalarProperty Name="NinjaID" ColumnName="NinjaID" />
+          <ScalarProperty Name="ClanID" ColumnName="ClanID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsExperienced" ColumnName="IsExperienced" />
+          <ScalarProperty Name="IsAlive" ColumnName="IsAlive" />
+          <ScalarProperty Name="NinjaGUID" ColumnName="NinjaGUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NinjaEquipment">
+      <EntityTypeMapping TypeName="TurtleModel.NinjaEquipment">
+        <MappingFragment StoreEntitySet="NinjaEquipment">
+          <ScalarProperty Name="NinjaEquipmentID" ColumnName="NinjaEquipmentID" />
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+          <ScalarProperty Name="NinjaID" ColumnName="NinjaID" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsSpecial" ColumnName="IsSpecial" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="NinjaEquipmentGUID" ColumnName="NinjaEquipmentGUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="uspClanCount" FunctionName="TurtleModel.Store.uspClanCount" />
+    <FunctionImportMapping FunctionImportName="uspClanDelete" FunctionName="TurtleModel.Store.uspClanDelete" />
+    <FunctionImportMapping FunctionImportName="uspClanInsert" FunctionName="TurtleModel.Store.uspClanInsert" />
+    <FunctionImportMapping FunctionImportName="uspClanList" FunctionName="TurtleModel.Store.uspClanList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TurtleModel.uspClanList_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
+          <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
+          <ScalarProperty Name="ClanGUID" ColumnName="ClanGUID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspClanSelect" FunctionName="TurtleModel.Store.uspClanSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TurtleModel.uspClanSelect_Result">
+          <ScalarProperty Name="ClanID" ColumnName="ClanID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
+          <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ClanGUID" ColumnName="ClanGUID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspClanUpdate" FunctionName="TurtleModel.Store.uspClanUpdate" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,9 @@
+F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\TurtleDAL.dll.config
+F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\TurtleDAL.dll
+F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\TurtleDAL.pdb
+F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\EntityFramework.dll
+F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\EntityFramework.SqlServer.dll
+F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\EntityFramework.xml
+F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\EntityFramework.SqlServer.xml
+F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\obj\Debug\TurtleDAL.dll
+F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\obj\Debug\TurtleDAL.pdb

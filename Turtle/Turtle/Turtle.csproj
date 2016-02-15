@@ -182,39 +182,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="ORM\Clan.cs">
-      <DependentUpon>TurtleORM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ORM\Equipment.cs">
-      <DependentUpon>TurtleORM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ORM\Ninja.cs">
-      <DependentUpon>TurtleORM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ORM\NinjaEquipment.cs">
-      <DependentUpon>TurtleORM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ORM\TurtleORM.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TurtleORM.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ORM\TurtleORM.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TurtleORM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ORM\TurtleORM.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TurtleORM.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="ORM\uspClanList_Result.cs">
-      <DependentUpon>TurtleORM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ORM\uspClanSelect_Result.cs">
-      <DependentUpon>TurtleORM.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -235,24 +202,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="ORM\TurtleORM.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TurtleORM.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="ORM\TurtleORM.edmx.diagram">
-      <DependentUpon>TurtleORM.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
-    <Content Include="ORM\TurtleORM.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TurtleORM.edmx</DependentUpon>
-      <LastGenOutput>TurtleORM.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ORM\TurtleORM.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TurtleORM.edmx</DependentUpon>
-      <LastGenOutput>TurtleORM.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
@@ -320,6 +270,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TurtleDAL\TurtleDAL.csproj">
+      <Project>{76822109-addd-43a8-9b32-c4b73dda2f4a}</Project>
+      <Name>TurtleDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

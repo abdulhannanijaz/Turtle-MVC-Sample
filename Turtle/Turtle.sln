@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turtle", "Turtle\Turtle.csproj", "{FA8BB1CB-DC6B-417C-9D70-62B7E4BF62E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurtleDAL", "TurtleDAL\TurtleDAL.csproj", "{76822109-ADDD-43A8-9B32-C4B73DDA2F4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FA8BB1CB-DC6B-417C-9D70-62B7E4BF62E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA8BB1CB-DC6B-417C-9D70-62B7E4BF62E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA8BB1CB-DC6B-417C-9D70-62B7E4BF62E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76822109-ADDD-43A8-9B32-C4B73DDA2F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76822109-ADDD-43A8-9B32-C4B73DDA2F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76822109-ADDD-43A8-9B32-C4B73DDA2F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76822109-ADDD-43A8-9B32-C4B73DDA2F4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
