@@ -1,53 +1,25 @@
-﻿@model IEnumerable<TurtleDAL.uspClanList_Result>
-
-@{
-    ViewBag.Title = "Clans List";
-    int? totalpages = ViewBag.totalpages;
-    int tilecount = 1;
+﻿@{
+    ViewBag.Title = "Index";
 }
 
-
-
-<h1 class="lead text-center text-primary">Clans List</h1>
-<a href=@Url.Action("Create","Clans") class="btn btn-primary">
-    New Clan
-    <span class="glyphicon glyphicon-plus"></span>
-</a>
-<hr />
+<h2 class="lead bg-success">Welcome to Clan Index Page</h2>
 <div class="row">
+    <div class="col-md-6">
 
-   
-    @foreach (var item in Model)
-    {
+        <a class="btn btn-block btn-lg btn-primary btn3d" href=@Url.Action("Create","Clans")>
+            <span class="glyphicon glyphicon-plus"></span>
+            Add Clans
+        </a>
 
-        Html.RenderPartial("_ClanTile", item);
-        if ((tilecount % 4) == 0)
-        {
-          @:</div>
-          @:<br />
-          @:<div class="row">
-        }
-        tilecount++;
+    </div>
+    <div class="col-md-6">
 
-    }
+        <a class="btn btn-block btn-lg  btn-info btn3d" href=@Url.Action("List","Clans")>
+            <span class="glyphicon glyphicon-list"></span>
+            Show All Clans
+        </a>
+
+
+    </div>
 </div>
-
-
 <hr/>
-<div class="row">
-    @if (totalpages.HasValue)
-    {
-        <ul class="pagination">
-            @for (int currentpage = 1; currentpage < totalpages.Value; currentpage++)
-            {
-                <li>
-                    <a href=@Url.Action("Index", "Clans", new { currentpage = currentpage }) > @currentpage</a>
-                </li>
-            }
-
-        </ul>
-    }
-
-</div>
-
-

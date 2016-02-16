@@ -24,16 +24,15 @@ namespace Turtle.Controllers
 
 
         // GET: Clans
-        public ActionResult Index(int? currentpage)
+        public ActionResult Index()
         {
-                             
-            ViewBag.totalpages = pagination.GetPageCount(db.uspClanCount().FirstOrDefault() ?? 0);
-
-            var ClanList = db.uspClanList(pagination.GetOffsetNumber(currentpage), pagination.ItemCountPerPage);
-
-            return View(ClanList);
+            return View();
         }
 
+        public ActionResult List()
+        {
+            return View(db.uspClanList());
+        }
 
         // GET: Clans/Create
         public ActionResult Create()

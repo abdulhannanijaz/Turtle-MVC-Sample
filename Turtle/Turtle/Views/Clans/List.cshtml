@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TurtleDAL.uspClanList_Result>
+
+@{
+    ViewBag.Title = "Clans List";
+    int tilecount = 1;
+}
+
+
+
+<h1 class="lead text-center text-primary">Clans List</h1>
+<a href=@Url.Action("Create","Clans") class="btn btn-primary">
+    New Clan
+    <span class="glyphicon glyphicon-plus"></span>
+</a>
+<hr />
+<div class="row">
+
+   
+    @foreach (var item in Model)
+    {
+
+        Html.RenderPartial("_ClanTile", item);
+        if ((tilecount % 4) == 0)
+        {
+          @:</div>
+          @:<br />
+          @:<div class="row">
+        }
+        tilecount++;
+
+    }
+</div>
+
+
+<hr/>
+@*<div class="row">
+    @if (totalpages.HasValue)
+    {
+        <ul class="pagination">
+            @for (int currentpage = 1; currentpage < totalpages.Value; currentpage++)
+            {
+                <li>
+                    <a href=@Url.Action("Index", "Clans", new { currentpage = currentpage }) > @currentpage</a>
+                </li>
+            }
+
+        </ul>
+    }
+
+</div>*@
+
+

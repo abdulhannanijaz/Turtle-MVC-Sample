@@ -7,3 +7,13 @@ F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\EntityFramework.xml
 F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\EntityFramework.SqlServer.xml
 F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\obj\Debug\TurtleDAL.dll
 F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\obj\Debug\TurtleDAL.pdb
+E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\TurtleDAL.dll.config
+E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\TurtleDAL.dll
+E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\TurtleDAL.pdb
+E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\EntityFramework.dll
+E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\EntityFramework.xml
+E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\obj\Debug\TurtleDAL.dll
+E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\obj\Debug\TurtleDAL.pdb
+E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\obj\Debug\TurtleDAL.csprojResolveAssemblyReference.cache

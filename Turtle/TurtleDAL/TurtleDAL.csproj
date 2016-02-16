@@ -85,6 +85,12 @@
     <Compile Include="uspClanSelect_Result.cs">
       <DependentUpon>TurtleEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="uspNinjaList_Result.cs">
+      <DependentUpon>TurtleEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="uspNinjaSelect_Result.cs">
+      <DependentUpon>TurtleEntity.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

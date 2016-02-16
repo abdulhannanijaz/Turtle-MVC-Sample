@@ -34,6 +34,7 @@
     <Property Name="CreatedBy" Type="bigint" />
     <Property Name="IsExperienced" Type="bit" />
     <Property Name="IsAlive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
     <Property Name="NinjaGUID" Type="uniqueidentifier" />
   </EntityType>
   <EntityType Name="NinjaEquipment">
@@ -96,10 +97,7 @@
     <Parameter Name="IsEvil" Type="bit" Mode="In" />
     <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
   </Function>
-  <Function Name="uspClanList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
-    <Parameter Name="Offset" Type="int" Mode="In" />
-    <Parameter Name="Rows" Type="int" Mode="In" />
-  </Function>
+  <Function Name="uspClanList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan" />
   <Function Name="uspClanSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Clan">
     <Parameter Name="ClanGUID" Type="uniqueidentifier" Mode="In" />
   </Function>
@@ -109,6 +107,37 @@
     <Parameter Name="IsEvil" Type="bit" Mode="In" />
     <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
     <Parameter Name="ClanGUID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="uspNinjaCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ninja" />
+  <Function Name="uspNinjaDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ninja">
+    <Parameter Name="NinjaGUID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="uspNinjaInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ninja">
+    <Parameter Name="ClanID" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Age" Type="int" Mode="In" />
+    <Parameter Name="Picture" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+    <Parameter Name="IsExperienced" Type="bit" Mode="In" />
+    <Parameter Name="IsAlive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="uspNinjaList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ninja">
+    <Parameter Name="Offset" Type="int" Mode="In" />
+    <Parameter Name="Rows" Type="int" Mode="In" />
+  </Function>
+  <Function Name="uspNinjaSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ninja">
+    <Parameter Name="NinjaGUID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="uspNinjaUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Ninja">
+    <Parameter Name="ClanID" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Age" Type="int" Mode="In" />
+    <Parameter Name="Picture" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+    <Parameter Name="IsExperienced" Type="bit" Mode="In" />
+    <Parameter Name="IsAlive" Type="bit" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="NinjaGUID" Type="uniqueidentifier" Mode="In" />
   </Function>
   <EntityContainer Name="TurtleModelStoreContainer">
     <EntitySet Name="Clan" EntityType="Self.Clan" Schema="Clan" store:Type="Tables" />

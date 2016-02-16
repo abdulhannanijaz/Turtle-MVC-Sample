@@ -13,6 +13,7 @@ namespace TurtleDAL
     
     public partial class uspClanList_Result
     {
+        public int ClanID { get; set; }
         public string Name { get; set; }
         public string SymbolPic { get; set; }
         public Nullable<bool> IsEvil { get; set; }

@@ -43,6 +43,7 @@
     <EntitySetMapping Name="Ninja">
       <EntityTypeMapping TypeName="TurtleModel.Ninja">
         <MappingFragment StoreEntitySet="Ninja">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="NinjaID" ColumnName="NinjaID" />
           <ScalarProperty Name="ClanID" ColumnName="ClanID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -54,6 +55,33 @@
           <ScalarProperty Name="IsAlive" ColumnName="IsAlive" />
           <ScalarProperty Name="NinjaGUID" ColumnName="NinjaGUID" />
         </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="TurtleModel.Ninja">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="TurtleModel.Store.uspNinjaInsert">
+            <ScalarProperty Name="IsAlive" ParameterName="IsAlive" />
+            <ScalarProperty Name="IsExperienced" ParameterName="IsExperienced" />
+            <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+            <ScalarProperty Name="Picture" ParameterName="Picture" />
+            <ScalarProperty Name="Age" ParameterName="Age" />
+            <ScalarProperty Name="Name" ParameterName="Name" />
+            <ScalarProperty Name="ClanID" ParameterName="ClanID" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="TurtleModel.Store.uspNinjaUpdate">
+            <ScalarProperty Name="NinjaGUID" ParameterName="NinjaGUID" Version="Current" />
+            <ScalarProperty Name="IsDeleted" ParameterName="IsDeleted" Version="Current" />
+            <ScalarProperty Name="IsAlive" ParameterName="IsAlive" Version="Current" />
+            <ScalarProperty Name="IsExperienced" ParameterName="IsExperienced" Version="Current" />
+            <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" Version="Current" />
+            <ScalarProperty Name="Picture" ParameterName="Picture" Version="Current" />
+            <ScalarProperty Name="Age" ParameterName="Age" Version="Current" />
+            <ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+            <ScalarProperty Name="ClanID" ParameterName="ClanID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="TurtleModel.Store.uspNinjaDelete">
+            <ScalarProperty Name="NinjaGUID" ParameterName="NinjaGUID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="NinjaEquipment">
@@ -77,6 +105,7 @@
     <FunctionImportMapping FunctionImportName="uspClanList" FunctionName="TurtleModel.Store.uspClanList">
       <ResultMapping>
         <ComplexTypeMapping TypeName="TurtleModel.uspClanList_Result">
+          <ScalarProperty Name="ClanID" ColumnName="ClanID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
           <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
@@ -99,5 +128,40 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspClanUpdate" FunctionName="TurtleModel.Store.uspClanUpdate" />
+    <FunctionImportMapping FunctionImportName="uspNinjaCount" FunctionName="TurtleModel.Store.uspNinjaCount" />
+    <FunctionImportMapping FunctionImportName="uspNinjaDelete" FunctionName="TurtleModel.Store.uspNinjaDelete" />
+    <FunctionImportMapping FunctionImportName="uspNinjaInsert" FunctionName="TurtleModel.Store.uspNinjaInsert" />
+    <FunctionImportMapping FunctionImportName="uspNinjaList" FunctionName="TurtleModel.Store.uspNinjaList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TurtleModel.uspNinjaList_Result">
+          <ScalarProperty Name="NinjaID" ColumnName="NinjaID" />
+          <ScalarProperty Name="Clan" ColumnName="Clan" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="IsExperienced" ColumnName="IsExperienced" />
+          <ScalarProperty Name="IsAlive" ColumnName="IsAlive" />
+          <ScalarProperty Name="NinjaGUID" ColumnName="NinjaGUID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspNinjaSelect" FunctionName="TurtleModel.Store.uspNinjaSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TurtleModel.uspNinjaSelect_Result">
+          <ScalarProperty Name="NinjaID" ColumnName="NinjaID" />
+          <ScalarProperty Name="ClanID" ColumnName="ClanID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsExperienced" ColumnName="IsExperienced" />
+          <ScalarProperty Name="IsAlive" ColumnName="IsAlive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="NinjaGUID" ColumnName="NinjaGUID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspNinjaUpdate" FunctionName="TurtleModel.Store.uspNinjaUpdate" />
   </EntityContainerMapping>
 </Mapping>

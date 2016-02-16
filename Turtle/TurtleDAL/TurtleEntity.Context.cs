@@ -67,17 +67,9 @@ namespace TurtleDAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspClanInsert", nameParameter, symbolPicParameter, isEvilParameter, createdByParameter);
         }
     
-        public virtual ObjectResult<uspClanList_Result> uspClanList(Nullable<int> offset, Nullable<int> rows)
+        public virtual ObjectResult<uspClanList_Result> uspClanList()
         {
-            var offsetParameter = offset.HasValue ?
-                new ObjectParameter("Offset", offset) :
-                new ObjectParameter("Offset", typeof(int));
-    
-            var rowsParameter = rows.HasValue ?
-                new ObjectParameter("Rows", rows) :
-                new ObjectParameter("Rows", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanList_Result>("uspClanList", offsetParameter, rowsParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanList_Result>("uspClanList");
         }
     
         public virtual ObjectResult<uspClanSelect_Result> uspClanSelect(Nullable<System.Guid> clanGUID)
@@ -112,6 +104,116 @@ namespace TurtleDAL
                 new ObjectParameter("ClanGUID", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspClanUpdate", nameParameter, symbolPicParameter, isEvilParameter, createdByParameter, clanGUIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> uspNinjaCount()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("uspNinjaCount");
+        }
+    
+        public virtual int uspNinjaDelete(Nullable<System.Guid> ninjaGUID)
+        {
+            var ninjaGUIDParameter = ninjaGUID.HasValue ?
+                new ObjectParameter("NinjaGUID", ninjaGUID) :
+                new ObjectParameter("NinjaGUID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspNinjaDelete", ninjaGUIDParameter);
+        }
+    
+        public virtual int uspNinjaInsert(Nullable<int> clanID, string name, Nullable<int> age, string picture, Nullable<long> createdBy, Nullable<bool> isExperienced, Nullable<bool> isAlive)
+        {
+            var clanIDParameter = clanID.HasValue ?
+                new ObjectParameter("ClanID", clanID) :
+                new ObjectParameter("ClanID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var ageParameter = age.HasValue ?
+                new ObjectParameter("Age", age) :
+                new ObjectParameter("Age", typeof(int));
+    
+            var pictureParameter = picture != null ?
+                new ObjectParameter("Picture", picture) :
+                new ObjectParameter("Picture", typeof(string));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            var isExperiencedParameter = isExperienced.HasValue ?
+                new ObjectParameter("IsExperienced", isExperienced) :
+                new ObjectParameter("IsExperienced", typeof(bool));
+    
+            var isAliveParameter = isAlive.HasValue ?
+                new ObjectParameter("IsAlive", isAlive) :
+                new ObjectParameter("IsAlive", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspNinjaInsert", clanIDParameter, nameParameter, ageParameter, pictureParameter, createdByParameter, isExperiencedParameter, isAliveParameter);
+        }
+    
+        public virtual ObjectResult<uspNinjaList_Result> uspNinjaList(Nullable<int> offset, Nullable<int> rows)
+        {
+            var offsetParameter = offset.HasValue ?
+                new ObjectParameter("Offset", offset) :
+                new ObjectParameter("Offset", typeof(int));
+    
+            var rowsParameter = rows.HasValue ?
+                new ObjectParameter("Rows", rows) :
+                new ObjectParameter("Rows", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspNinjaList_Result>("uspNinjaList", offsetParameter, rowsParameter);
+        }
+    
+        public virtual ObjectResult<uspNinjaSelect_Result> uspNinjaSelect(Nullable<System.Guid> ninjaGUID)
+        {
+            var ninjaGUIDParameter = ninjaGUID.HasValue ?
+                new ObjectParameter("NinjaGUID", ninjaGUID) :
+                new ObjectParameter("NinjaGUID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspNinjaSelect_Result>("uspNinjaSelect", ninjaGUIDParameter);
+        }
+    
+        public virtual int uspNinjaUpdate(Nullable<int> clanID, string name, Nullable<int> age, string picture, Nullable<long> createdBy, Nullable<bool> isExperienced, Nullable<bool> isAlive, Nullable<bool> isDeleted, Nullable<System.Guid> ninjaGUID)
+        {
+            var clanIDParameter = clanID.HasValue ?
+                new ObjectParameter("ClanID", clanID) :
+                new ObjectParameter("ClanID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var ageParameter = age.HasValue ?
+                new ObjectParameter("Age", age) :
+                new ObjectParameter("Age", typeof(int));
+    
+            var pictureParameter = picture != null ?
+                new ObjectParameter("Picture", picture) :
+                new ObjectParameter("Picture", typeof(string));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            var isExperiencedParameter = isExperienced.HasValue ?
+                new ObjectParameter("IsExperienced", isExperienced) :
+                new ObjectParameter("IsExperienced", typeof(bool));
+    
+            var isAliveParameter = isAlive.HasValue ?
+                new ObjectParameter("IsAlive", isAlive) :
+                new ObjectParameter("IsAlive", typeof(bool));
+    
+            var isDeletedParameter = isDeleted.HasValue ?
+                new ObjectParameter("IsDeleted", isDeleted) :
+                new ObjectParameter("IsDeleted", typeof(bool));
+    
+            var ninjaGUIDParameter = ninjaGUID.HasValue ?
+                new ObjectParameter("NinjaGUID", ninjaGUID) :
+                new ObjectParameter("NinjaGUID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspNinjaUpdate", clanIDParameter, nameParameter, ageParameter, pictureParameter, createdByParameter, isExperiencedParameter, isAliveParameter, isDeletedParameter, ninjaGUIDParameter);
         }
     }
 }
