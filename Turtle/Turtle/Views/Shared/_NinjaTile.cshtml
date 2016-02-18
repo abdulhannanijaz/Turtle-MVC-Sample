@@ -1,43 +1,43 @@
-﻿@model TurtleDAL.uspClanList_Result
-
+﻿@model TurtleDAL.uspNinjaList_Result
 
 <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="thumbnail">
 
         <figure class="img-responsive">
-            <div class="top pull-right">                
-                <a href=@Url.Content("#"+Model.ClanGUID) data-toggle="collapse">
+            <div class="top pull-right">
+                <a href=@Url.Content("#"+Model.NinjaGUID) data-toggle="collapse">
                     <span class="glyphicon glyphicon-cog cog-color"></span>
                 </a>
             </div>
-            <img src=@Url.Content("~/images/Clan/"+Model.SymbolPic) alt=@Model.Name class="img-rounded"  height="100" width="100" />
+            <img src=@Url.Content("~/images/ninja/"+Model.Picture) alt=@Model.Name class="img-rounded" height="100" width="100" />
             <figcaption class="caption">
-                <h3 class="@if (Model.IsEvil == true)
+                <h3 class="@if (Model.IsAlive == true)
                 {
                     @:text-success
                 }
-                else if (Model.IsEvil == false)
+                else if (Model.IsAlive == false)
                 {
                     @:text-danger
                 }
                 ">
-                    <b>Clan : </b>@Model.Name
+                    <b>Name: </b>@Model.Name
+                    <b>Age: </b>
                 </h3>
             </figcaption>
         </figure>
 
-      
-        <div class="collapse" id=@Model.ClanGUID>
+
+        <div class="collapse" id=@Model.NinjaGUID>
             <div class="btn-group-xs">
-                <a href=@Url.Action("Details", new { guid = Model.ClanGUID }) class="btn btn-info">
+                <a href=@Url.Action("Details", new { guid = Model.NinjaGUID }) class="btn btn-info">
                     Details
                     <span class="glyphicon glyphicon-fullscreen"></span>
                 </a>
-                <a href=@Url.Action("Edit", new { guid = Model.ClanGUID}) class="btn btn-warning">
+                <a href=@Url.Action("Edit", new { guid = Model.NinjaGUID }) class="btn btn-warning">
                     Edit
                     <span class="glyphicon glyphicon-edit"></span>
                 </a>
-                <a href=@Url.Action("Delete", new { guid = Model.ClanGUID } ) class="btn btn-danger">
+                <a href=@Url.Action("Delete", new { guid = Model.NinjaGUID } ) class="btn btn-danger">
                     Delete
                     <span class="glyphicon glyphicon-trash"></span>
                 </a>

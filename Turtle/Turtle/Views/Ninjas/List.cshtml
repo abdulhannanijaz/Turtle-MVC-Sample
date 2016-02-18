@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TurtleDAL.uspNinjaList_Result>
+@{ 
+    ViewBag.Title = "List of Ninjas";
+    int totalpage = ViewBag.totalpage;
+    int? currentpage = ViewBag.currentpage;
+    int tilecount = 1;
+}
+
+<div class="row">
+    @{
+        foreach (var item in Model)
+        {
+            Html.RenderPartial("_NinjaTile", item);
+            if (tilecount % 4 == 0)
+            {
+                @:</div>
+                @:<br/>
+                @:<div class="row">
+            }
+
+            tilecount++;
+        }
+    }
+</div>
+<hr/>
+<div class="row center-block">
+    <ul class="pagination">
+        @{
+            for (int i = (currentpage ?? 1); i <= (10 + (currentpage ?? 0)) && i<=totalpage ; i++)
+            {
+                <li  @if ((currentpage.HasValue && currentpage.Value==i) || (i==1))
+                        {
+                             @:class="active"
+                        }>
+                    <a href=@Url.Action("List",new { pagenumber = i })>
+                        @i
+                    </a>                    
+                </li>
+            }
+         }
+
+    </ul>
+</div>
+@*for (int i = currentpage ?? 1 ; i <= (10 + (currentpage ?? 0)) && i<=totalpage ; i++)
+    {
+        <li  @if (currentpage.HasValue && currentpage.Value==i)
+                {
+                     @:class="active"
+                }>
+            <a href=@Url.Action("List",new { pagenumber = i })>
+                @(i+ (currentpage??0))
+            </a>
+        </li>
+    }*@

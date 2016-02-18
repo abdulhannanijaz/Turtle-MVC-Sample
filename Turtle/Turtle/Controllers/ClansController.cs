@@ -51,7 +51,7 @@ namespace Turtle.Controllers
                 {
 
                     var imagename = picture.GetImageName(clan.SymbolPic, Path.GetExtension(upload.FileName));
-                    var imageSavePath = Path.Combine(Server.MapPath("~/images"), imagename);
+                    var imageSavePath = Path.Combine(Server.MapPath("~/images/clan"), imagename);
                     upload.SaveAs(imageSavePath);
                     clan.SymbolPic = imagename;
                 }

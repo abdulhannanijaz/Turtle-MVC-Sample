@@ -260,12 +260,14 @@
     <Content Include="Views\Clans\Edit.cshtml" />
     <Content Include="Views\Clans\List.cshtml" />
     <Content Include="Views\Shared\_ClanTile.cshtml" />
+    <Content Include="Views\Clans\Index.cshtml" />
     <Content Include="Views\Ninjas\Create.cshtml" />
     <Content Include="Views\Ninjas\Delete.cshtml" />
     <Content Include="Views\Ninjas\Details.cshtml" />
     <Content Include="Views\Ninjas\Edit.cshtml" />
+    <Content Include="Views\Ninjas\List.cshtml" />
     <Content Include="Views\Ninjas\Index.cshtml" />
-    <Content Include="Views\Clans\Index.cshtml" />
+    <Content Include="Views\Shared\_NinjaTile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

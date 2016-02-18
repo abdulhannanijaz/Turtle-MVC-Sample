@@ -3,33 +3,43 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TurtleDAL;
+using Turtle.Helper;
+using System.IO;
 
 namespace Turtle.Controllers
 {
     public class NinjasController : Controller
     {
-        private TurtleEntities db = new TurtleEntities();
+        private TurtleEntities db       = new TurtleEntities();
+        private Picture picture         = new Picture();
+        private Pagination pagination   = new Pagination();
 
         // GET: Ninjas
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
+        {          
+            return View();
+        }
+
+        public ActionResult List(int? pagenumber)
         {
-            var ninja = db.Ninja.Include(n => n.Clan);
-            return View(await ninja.ToListAsync());
+            ViewBag.totalpage = pagination.GetPageCount(db.uspNinjaCount().FirstOrDefault() ?? 0);
+            ViewBag.currentpage = pagenumber;
+
+            return View(db.uspNinjaList(pagination.GetOffsetNumber(pagenumber),pagination.ItemCountPerPage).ToList());
         }
 
         // GET: Ninjas/Details/5
-        public async Task<ActionResult> Details(long? id)
+        public ActionResult Details(Guid? guid)
         {
-            if (id == null)
+            if (!guid.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ninja ninja = await db.Ninja.FindAsync(id);
+            var ninja = db.uspNinjaSelect(guid.Value).FirstOrDefault();
             if (ninja == null)
             {
                 return HttpNotFound();
@@ -49,27 +59,44 @@ namespace Turtle.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "NinjaID,ClanID,Name,Age,Picture,CreatedOn,CreatedBy,IsExperienced,IsAlive,NinjaGUID")] Ninja ninja)
+        public ActionResult Create([Bind(Include = "ClanID,Name,Age,IsExperienced,IsAlive")] Ninja ninja, HttpPostedFileBase upload)
         {
+
+            if (upload != null && upload.ContentLength > 0)
+            {
+                if (picture.IsValidImage(upload.ContentType))
+                {
+                    var imagename = picture.GetImageName(ninja.Picture, Path.GetExtension(upload.FileName));
+                    var imagesavepath = Path.Combine(Server.MapPath("~/images/ninja/" + imagename));
+                    upload.SaveAs(imagesavepath);
+                    ninja.Picture = imagename;
+                }
+                else
+                {
+                    ModelState.AddModelError("Picture", "Please select an image file");
+                }
+            }
+
+
             if (ModelState.IsValid)
             {
                 db.Ninja.Add(ninja);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                db.SaveChanges();
+                return RedirectToAction("List");
             }
 
-            ViewBag.ClanID = new SelectList(db.Clan, "ClanID", "Name", ninja.ClanID);
+            ViewBag.ClanID = new SelectList(db.uspClanList(), "ClanID", "Name", ninja.ClanID);
             return View(ninja);
         }
 
         // GET: Ninjas/Edit/5
-        public async Task<ActionResult> Edit(long? id)
+        public ActionResult Edit(Guid? guid)
         {
-            if (id == null)
+            if (!guid.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ninja ninja = await db.Ninja.FindAsync(id);
+            var ninja = db.uspNinjaSelect(guid.Value).FirstOrDefault();
             if (ninja == null)
             {
                 return HttpNotFound();
@@ -83,12 +110,26 @@ namespace Turtle.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "NinjaID,ClanID,Name,Age,Picture,CreatedOn,CreatedBy,IsExperienced,IsAlive,NinjaGUID")] Ninja ninja)
+        public ActionResult Edit([Bind(Include = "ClanID,Name,Age,Picture,IsExperienced,IsAlive")] Ninja ninja, HttpPostedFileBase upload)
         {
+            if (upload != null && upload.ContentLength > 0)
+            {
+                if (picture.IsValidImage(upload.ContentType))
+                {
+                    var imagename = picture.GetImageName(ninja.Picture, Path.GetExtension(upload.FileName));
+                    var imagesavepath = Path.Combine(Server.MapPath("~/images/ninja/" + imagename));
+                    upload.SaveAs(imagesavepath);
+                    ninja.Picture = imagename;
+                }
+                else
+                {
+                    ModelState.AddModelError("Picture", "Please select an image file");
+                }
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(ninja).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.ClanID = new SelectList(db.Clan, "ClanID", "Name", ninja.ClanID);
@@ -96,13 +137,13 @@ namespace Turtle.Controllers
         }
 
         // GET: Ninjas/Delete/5
-        public async Task<ActionResult> Delete(long? id)
+        public ActionResult Delete(Guid? guid)
         {
-            if (id == null)
+            if (!guid.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ninja ninja = await db.Ninja.FindAsync(id);
+            var ninja = db.uspNinjaSelect(guid.Value).FirstOrDefault();
             if (ninja == null)
             {
                 return HttpNotFound();
@@ -113,11 +154,11 @@ namespace Turtle.Controllers
         // POST: Ninjas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(long id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
-            Ninja ninja = await db.Ninja.FindAsync(id);
+            Ninja ninja = db.Ninja.Find(id);
             db.Ninja.Remove(ninja);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -126,6 +167,8 @@ namespace Turtle.Controllers
             if (disposing)
             {
                 db.Dispose();
+                picture = null;
+                pagination = null;
             }
             base.Dispose(disposing);
         }

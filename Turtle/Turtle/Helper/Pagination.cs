@@ -20,7 +20,7 @@ namespace Turtle.Helper
         public int GetPageCount(int TotalItems)
         {
             PageCount = TotalItems / ItemCountPerPage;
-            //To handlke 1 backward page as page one will have all the records 
+            //To handle 1 backward page as page one will have all the records 
             return PageCount;
         }
 

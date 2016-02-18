@@ -1,20 +1,21 @@
-﻿@model TurtleDAL.Ninja
+﻿@model TurtleDAL.uspNinjaSelect_Result
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Ninja :"+@Model.Name;
 }
 
-<h2>Edit</h2>
+<h1 class="lead text-capitalize bg-danger">Edit Ninja : @Model.Name</h1>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Ninja</h4>
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.NinjaID)
+        @Html.HiddenFor(model => model.NinjaGUID)
+        @Html.HiddenFor(model => model.Picture)
 
         <div class="form-group">
             @Html.LabelFor(model => model.ClanID, "ClanID", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -43,27 +44,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Picture, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="file" name="upload" />
                 @Html.ValidationMessageFor(model => model.Picture, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedOn, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedOn, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
+      
         <div class="form-group">
             @Html.LabelFor(model => model.IsExperienced, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -85,21 +71,31 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NinjaGUID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NinjaGUID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NinjaGUID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="col-md-offset-2 col-md-10 btn-group">
+                <!-- Main form submission button-->
+                
+                <input type="submit" value="Save" class="btn btn-warning" />
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+              
+                <a href=@Url.Action("Delete","Ninjas", new {guid = Model.NinjaGUID }) class="btn btn-danger">
+                    <span class="glyphicon glyphicon-trash"></span> Delete
+                </a>
+                <a href=@Url.Action("List","Ninjas") class="btn btn-default">
+                    <span class="glyphicon glyphicon-th-list"></span> List
+                </a>
+                <a href=@Url.Action("Index","Ninjas") class="btn btn-success">
+                    <span class="glyphicon glyphicon-home"></span> Index
+                </a>
+                <a href=@Url.Action("Create","Ninjas") class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus-sign"></span> New
+                </a>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

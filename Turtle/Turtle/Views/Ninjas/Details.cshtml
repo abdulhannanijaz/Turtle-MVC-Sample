@@ -1,4 +1,4 @@
-﻿@model TurtleDAL.Ninja
+﻿@model TurtleDAL.uspNinjaSelect_Result
 
 @{
     ViewBag.Title = "Details";
@@ -75,6 +75,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Clan.Name)
         </dt>
 
@@ -84,7 +92,20 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.NinjaID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="btn-group">
+    <a href=@Url.Action("Create","Ninjas") class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus-sign"></span> New
+    </a>
+    <a href=@Url.Action("Edit","Ninjas", new {guid = Model.NinjaGUID }) class="btn btn-warning">
+        <span class="glyphicon glyphicon-edit"></span> Edit
+    </a>
+    <a href=@Url.Action("Delete","Ninjas", new {guid = Model.NinjaGUID }) class="btn btn-danger">
+        <span class="glyphicon glyphicon-trash"></span> Delete
+    </a>
+    <a href=@Url.Action("List","Ninjas") class="btn btn-default">
+        <span class="glyphicon glyphicon-th-list"></span> List
+    </a>
+    <a href=@Url.Action("Index","Ninjas") class="btn btn-success">
+        <span class="glyphicon glyphicon-home"></span> Index
+    </a>
+</div>
