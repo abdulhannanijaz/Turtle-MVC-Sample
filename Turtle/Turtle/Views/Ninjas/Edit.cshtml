@@ -74,7 +74,7 @@
             <div class="col-md-offset-2 col-md-10 btn-group">
                 <!-- Main form submission button-->
                 
-                <input type="submit" value="Save" class="btn btn-warning" />
+                <input type="submit" value="Save" class="btn btn-success" />
 
               
                 <a href=@Url.Action("Delete","Ninjas", new {guid = Model.NinjaGUID }) class="btn btn-danger">
@@ -83,11 +83,8 @@
                 <a href=@Url.Action("List","Ninjas") class="btn btn-default">
                     <span class="glyphicon glyphicon-th-list"></span> List
                 </a>
-                <a href=@Url.Action("Index","Ninjas") class="btn btn-success">
+                <a href=@Url.Action("Index","Ninjas") class="btn btn-info">
                     <span class="glyphicon glyphicon-home"></span> Index
-                </a>
-                <a href=@Url.Action("Create","Ninjas") class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus-sign"></span> New
                 </a>
             </div>
         </div>

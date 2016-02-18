@@ -5,8 +5,18 @@
 }
 
 <h2>Index</h2>
+<div class="row">
 
-@Html.ActionLink("Add","Create")
-@Html.ActionLink("List", "List")
-@Html.ActionLink("Edit", "Edit")
-@Html.ActionLink("De", "Create")
+    <div class="col-lg-6 text-center h1 text-info bg-primary" >
+        <a href=@Url.Action("Create","Ninjas") >
+           
+                <span class="glyphicon glyphicon-th-list"></span> List
+           
+
+        </a>
+    </div>
+
+    <a href=@Url.Action("Index","Ninjas") class="btn btn-info">
+        <span class="glyphicon glyphicon-home"></span> Index
+    </a>
+</div>

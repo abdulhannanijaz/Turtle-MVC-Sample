@@ -82,20 +82,11 @@
             @Html.DisplayFor(model => model.IsDeleted)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Clan.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Clan.Name)
-        </dd>
+        
 
     </dl>
 </div>
 <div class="btn-group">
-    <a href=@Url.Action("Create","Ninjas") class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus-sign"></span> New
-    </a>
     <a href=@Url.Action("Edit","Ninjas", new {guid = Model.NinjaGUID }) class="btn btn-warning">
         <span class="glyphicon glyphicon-edit"></span> Edit
     </a>
@@ -105,7 +96,7 @@
     <a href=@Url.Action("List","Ninjas") class="btn btn-default">
         <span class="glyphicon glyphicon-th-list"></span> List
     </a>
-    <a href=@Url.Action("Index","Ninjas") class="btn btn-success">
+    <a href=@Url.Action("Index","Ninjas") class="btn btn-info">
         <span class="glyphicon glyphicon-home"></span> Index
     </a>
 </div>
