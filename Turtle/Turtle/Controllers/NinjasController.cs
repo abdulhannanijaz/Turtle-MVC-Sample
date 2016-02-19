@@ -96,7 +96,7 @@ namespace Turtle.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var ninja = db.uspNinjaSelect(guid.Value).FirstOrDefault();
+            var ninja = db.uspNinjaSelect(guid.Value).SingleOrDefault();
             if (ninja == null)
             {
                 return HttpNotFound();
@@ -143,7 +143,7 @@ namespace Turtle.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var ninja = db.uspNinjaSelect(guid.Value).FirstOrDefault();
+            var ninja = db.uspNinjaSelect(guid.Value).SingleOrDefault();
             if (ninja == null)
             {
                 return HttpNotFound();
@@ -154,12 +154,20 @@ namespace Turtle.Controllers
         // POST: Ninjas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult DeleteConfirmed(Guid guid)
         {
-            Ninja ninja = db.Ninja.Find(id);
+            //If you want an exception to be thrown if the result set contains many records, 
+                //use SingleOrDefault.
+            //If you always want 1 record no matter what the result set contains, use FirstOrDefault
+
+            Ninja ninja = db.Ninja.SingleOrDefault(m=>m.NinjaGUID == guid);
+            if (ninja == null)
+            {
+                return HttpNotFound();
+            }
             db.Ninja.Remove(ninja);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
         protected override void Dispose(bool disposing)
