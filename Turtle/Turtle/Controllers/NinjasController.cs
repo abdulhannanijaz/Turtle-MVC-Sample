@@ -48,11 +48,12 @@ namespace Turtle.Controllers
         }
 
         // GET: Ninjas/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.ClanID = new SelectList(db.uspClanList(), "ClanID", "Name");
+            ViewBag.ClanID = new SelectList(db.uspClanList(), "ClanID", "Name",id??0);
             return View();
         }
+
 
         // POST: Ninjas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

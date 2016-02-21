@@ -17,3 +17,4 @@ E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\bin\Debug\EntityFramework.SqlServer
 E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\obj\Debug\TurtleDAL.dll
 E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\obj\Debug\TurtleDAL.pdb
 E:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\obj\Debug\TurtleDAL.csprojResolveAssemblyReference.cache
+F:\GITHUB\Turtle-MVC-Sample\Turtle\TurtleDAL\obj\Debug\TurtleDAL.csprojResolveAssemblyReference.cache

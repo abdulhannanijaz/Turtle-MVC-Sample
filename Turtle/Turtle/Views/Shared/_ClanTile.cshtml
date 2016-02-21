@@ -1,47 +1,48 @@
 ﻿@model TurtleDAL.uspClanList_Result
 
 
-<div class="col-md-3 col-sm-6 col-xs-12">
+<div class="col-md-6 col-sm-6 col-xs-12">
     <div class="thumbnail">
-
         <figure class="img-responsive">
             <div class="top pull-right">                
-                <a href=@Url.Content("#"+Model.ClanGUID) data-toggle="collapse">
+                <a href=@Url.Content("#"+Model.ClanID) data-toggle="collapse">
                     <span class="glyphicon glyphicon-cog cog-color"></span>
-                </a>
+                </a>              
             </div>
-            <img src=@Url.Content("~/images/Clan/"+Model.SymbolPic) alt=@Model.Name class="img-rounded"  height="100" width="100" />
+            <img src=@Url.Content("~/images/Clan/"+Model.SymbolPic) alt=@Model.Name class="img-rounded"  width="200" height="200"/>
             <figcaption class="caption">
                 <h3 class="@if (Model.IsEvil == true)
-                {
-                    @:text-success
-                }
-                else if (Model.IsEvil == false)
-                {
-                    @:text-danger
-                }
-                ">
+                            {
+                                @:text-success
+                            }
+                            else if (Model.IsEvil == false)
+                            {
+                                @:text-danger
+                            }">
                     <b>Clan : </b>@Model.Name
                 </h3>
             </figcaption>
         </figure>
 
-      
-        <div class="collapse" id=@Model.ClanGUID>
-            <div class="btn-group-xs">
-                <a href=@Url.Action("Details", new { guid = Model.ClanGUID }) class="btn btn-info">
-                    Details
-                    <span class="glyphicon glyphicon-fullscreen"></span>
+        <div class="collapse" id=@Model.ClanID>
+            <div class="btn-group-sm">
+                <a href=@Url.Action("Details", new { guid = Model.ClanGUID }) class="btn btn-info">                   
+                    <span class="glyphicon glyphicon-fullscreen"></span>  Details
                 </a>
                 <a href=@Url.Action("Edit", new { guid = Model.ClanGUID}) class="btn btn-warning">
-                    Edit
-                    <span class="glyphicon glyphicon-edit"></span>
+                   
+                    <span class="glyphicon glyphicon-edit"></span> Edit
                 </a>
                 <a href=@Url.Action("Delete", new { guid = Model.ClanGUID } ) class="btn btn-danger">
-                    Delete
-                    <span class="glyphicon glyphicon-trash"></span>
+                    
+                    <span class="glyphicon glyphicon-trash"></span> Delete
+                </a>
+                <a href=@Url.Action("Create", "Ninjas", new { id = Model.ClanID } ) class="btn btn-primary">
+                   
+                    <span class="glyphicon glyphicon-user"></span> Add Ninja
                 </a>
             </div>
         </div>
+      
     </div>
 </div>
