@@ -113,20 +113,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspClanSelect" FunctionName="TurtleModel.Store.uspClanSelect">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="TurtleModel.uspClanSelect_Result">
-          <ScalarProperty Name="ClanID" ColumnName="ClanID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="SymbolPic" ColumnName="SymbolPic" />
-          <ScalarProperty Name="IsEvil" ColumnName="IsEvil" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="ClanGUID" ColumnName="ClanGUID" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspClanUpdate" FunctionName="TurtleModel.Store.uspClanUpdate" />
     <FunctionImportMapping FunctionImportName="uspNinjaCount" FunctionName="TurtleModel.Store.uspNinjaCount" />
     <FunctionImportMapping FunctionImportName="uspNinjaDelete" FunctionName="TurtleModel.Store.uspNinjaDelete" />
@@ -163,5 +149,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspNinjaUpdate" FunctionName="TurtleModel.Store.uspNinjaUpdate" />
+    <FunctionImportMapping FunctionImportName="uspClanSelect" FunctionName="TurtleModel.Store.uspClanSelect" />
   </EntityContainerMapping>
 </Mapping>

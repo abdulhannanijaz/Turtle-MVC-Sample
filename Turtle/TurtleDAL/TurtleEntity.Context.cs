@@ -72,15 +72,6 @@ namespace TurtleDAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanList_Result>("uspClanList");
         }
     
-        public virtual ObjectResult<uspClanSelect_Result> uspClanSelect(Nullable<System.Guid> clanGUID)
-        {
-            var clanGUIDParameter = clanGUID.HasValue ?
-                new ObjectParameter("ClanGUID", clanGUID) :
-                new ObjectParameter("ClanGUID", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspClanSelect_Result>("uspClanSelect", clanGUIDParameter);
-        }
-    
         public virtual int uspClanUpdate(string name, string symbolPic, Nullable<bool> isEvil, Nullable<long> createdBy, Nullable<System.Guid> clanGUID)
         {
             var nameParameter = name != null ?
@@ -214,6 +205,24 @@ namespace TurtleDAL
                 new ObjectParameter("NinjaGUID", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspNinjaUpdate", clanIDParameter, nameParameter, ageParameter, pictureParameter, createdByParameter, isExperiencedParameter, isAliveParameter, isDeletedParameter, ninjaGUIDParameter);
+        }
+    
+        public virtual ObjectResult<Clan> uspClanSelect(Nullable<System.Guid> clanGUID)
+        {
+            var clanGUIDParameter = clanGUID.HasValue ?
+                new ObjectParameter("ClanGUID", clanGUID) :
+                new ObjectParameter("ClanGUID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Clan>("uspClanSelect", clanGUIDParameter);
+        }
+    
+        public virtual ObjectResult<Clan> uspClanSelect(Nullable<System.Guid> clanGUID, MergeOption mergeOption)
+        {
+            var clanGUIDParameter = clanGUID.HasValue ?
+                new ObjectParameter("ClanGUID", clanGUID) :
+                new ObjectParameter("ClanGUID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Clan>("uspClanSelect", mergeOption, clanGUIDParameter);
         }
     }
 }
