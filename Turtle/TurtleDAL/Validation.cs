@@ -24,4 +24,25 @@ namespace TurtleDAL
         public Nullable<bool> IsEvil { get; set; }
 
     }
+
+    public partial class NinjaMetadata
+    {
+        [Required]
+        [Display(Name ="Clan")]
+        public Nullable<int> ClanID { get; set; }
+        [Required(ErrorMessage ="{0} is requried")]
+        [StringLength(30,ErrorMessage ="{0} must be between {2} and {1} Length",MinimumLength =1)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Full Name")]
+        public string Name { get; set; }
+
+
+        [Display(Name = "Age (in years)")]
+        [Range(0,100,ErrorMessage ="{0} must be between {1} and {2}")]
+        [DataType(DataType.Text)]
+        public Nullable<int> Age { get; set; }
+        [Display(Name ="Picture Link")]
+        public string Picture { get; set; }
+
+    }
 }

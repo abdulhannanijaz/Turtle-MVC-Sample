@@ -12,4 +12,10 @@ namespace TurtleDAL
     {
 
     }
+
+    [MetadataType(typeof(NinjaMetadata))]
+    public partial class Ninja
+    {
+
+    }
 }
