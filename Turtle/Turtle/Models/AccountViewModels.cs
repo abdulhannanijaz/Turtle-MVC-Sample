@@ -79,6 +79,10 @@ namespace Turtle.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public int Age { get; set; }
+        public string First { get; set; }
+        public string Last { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -180,6 +180,15 @@
     </Compile>
     <Compile Include="Helper\Pagination.cs" />
     <Compile Include="Helper\Picture.cs" />
+    <Compile Include="Migrations\201603021231014_MyNewMigrationName.cs" />
+    <Compile Include="Migrations\201603021231014_MyNewMigrationName.Designer.cs">
+      <DependentUpon>201603021231014_MyNewMigrationName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603021238099_MyNewMigrationName2.cs" />
+    <Compile Include="Migrations\201603021238099_MyNewMigrationName2.Designer.cs">
+      <DependentUpon>201603021238099_MyNewMigrationName2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -220,14 +229,18 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -286,6 +299,14 @@
       <Project>{76822109-addd-43a8-9b32-c4b73dda2f4a}</Project>
       <Name>TurtleDAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603021231014_MyNewMigrationName.resx">
+      <DependentUpon>201603021231014_MyNewMigrationName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603021238099_MyNewMigrationName2.resx">
+      <DependentUpon>201603021238099_MyNewMigrationName2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

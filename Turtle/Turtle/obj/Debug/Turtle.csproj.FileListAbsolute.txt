@@ -337,3 +337,6 @@ E:\GITHUB\Turtle-MVC-Sample\Turtle\Turtle\bin\Microsoft.Owin.Security.MicrosoftA
 E:\GITHUB\Turtle-MVC-Sample\Turtle\Turtle\obj\Debug\Turtle.csprojResolveAssemblyReference.cache
 E:\GITHUB\Turtle-MVC-Sample\Turtle\Turtle\obj\Debug\Turtle.dll
 E:\GITHUB\Turtle-MVC-Sample\Turtle\Turtle\obj\Debug\Turtle.pdb
+E:\GITHUB\Turtle-MVC-Sample\Turtle\Turtle\obj\Debug\Turtle.Migrations.MyNewMigrationName.resources
+E:\GITHUB\Turtle-MVC-Sample\Turtle\Turtle\obj\Debug\Turtle.csproj.GenerateResource.Cache
+E:\GITHUB\Turtle-MVC-Sample\Turtle\Turtle\obj\Debug\Turtle.Migrations.MyNewMigrationName2.resources
