@@ -31,6 +31,11 @@ namespace TurtleDAL
         public virtual DbSet<Equipment> Equipment { get; set; }
         public virtual DbSet<Ninja> Ninja { get; set; }
         public virtual DbSet<NinjaEquipment> NinjaEquipment { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
     
         public virtual ObjectResult<Nullable<int>> uspClanCount()
         {
@@ -157,13 +162,22 @@ namespace TurtleDAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspNinjaList_Result>("uspNinjaList", offsetParameter, rowsParameter);
         }
     
-        public virtual ObjectResult<uspNinjaSelect_Result> uspNinjaSelect(Nullable<System.Guid> ninjaGUID)
+        public virtual ObjectResult<Ninja> uspNinjaSelect(Nullable<System.Guid> ninjaGUID)
         {
             var ninjaGUIDParameter = ninjaGUID.HasValue ?
                 new ObjectParameter("NinjaGUID", ninjaGUID) :
                 new ObjectParameter("NinjaGUID", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspNinjaSelect_Result>("uspNinjaSelect", ninjaGUIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Ninja>("uspNinjaSelect", ninjaGUIDParameter);
+        }
+    
+        public virtual ObjectResult<Ninja> uspNinjaSelect(Nullable<System.Guid> ninjaGUID, MergeOption mergeOption)
+        {
+            var ninjaGUIDParameter = ninjaGUID.HasValue ?
+                new ObjectParameter("NinjaGUID", ninjaGUID) :
+                new ObjectParameter("NinjaGUID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Ninja>("uspNinjaSelect", mergeOption, ninjaGUIDParameter);
         }
     
         public virtual int uspNinjaUpdate(Nullable<int> clanID, string name, Nullable<int> age, string picture, Nullable<long> createdBy, Nullable<bool> isExperienced, Nullable<bool> isAlive, Nullable<bool> isDeleted, Nullable<System.Guid> ninjaGUID)

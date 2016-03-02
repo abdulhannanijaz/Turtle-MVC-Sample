@@ -12,6 +12,14 @@
         <AssociationConnector Association="TurtleModel.FK_Ninja_Clan" ManuallyRouted="false" />
         <AssociationConnector Association="TurtleModel.FK_NinjaEquipment_Equipment" ManuallyRouted="false" />
         <AssociationConnector Association="TurtleModel.FK_NinjaEquipment_Ninja" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TurtleModel.C__MigrationHistory" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TurtleModel.AspNetRoles" Width="1.5" PointX="5.375" PointY="7.5" />
+        <EntityTypeShape EntityType="TurtleModel.AspNetUserClaims" Width="1.5" PointX="9.875" PointY="6" />
+        <EntityTypeShape EntityType="TurtleModel.AspNetUserLogins" Width="1.5" PointX="9.875" PointY="8.75" />
+        <EntityTypeShape EntityType="TurtleModel.AspNetUsers" Width="1.5" PointX="7.625" PointY="6.375" />
+        <AssociationConnector Association="TurtleModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="TurtleModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="TurtleModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

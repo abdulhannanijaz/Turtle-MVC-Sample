@@ -51,7 +51,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspNetRoles.cs">
+      <DependentUpon>TurtleEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaims.cs">
+      <DependentUpon>TurtleEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogins.cs">
+      <DependentUpon>TurtleEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUsers.cs">
+      <DependentUpon>TurtleEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Clan.cs">
+      <DependentUpon>TurtleEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>TurtleEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Equipment.cs">
@@ -83,9 +98,6 @@
       <DependentUpon>TurtleEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="uspNinjaList_Result.cs">
-      <DependentUpon>TurtleEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="uspNinjaSelect_Result.cs">
       <DependentUpon>TurtleEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Validation.cs" />

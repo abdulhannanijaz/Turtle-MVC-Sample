@@ -7,21 +7,22 @@ namespace Turtle.Helper
 {
     public class Pagination
     {
-        private int PageCount;
+        private int TotalPages;
         public int ItemCountPerPage{ get; }
         private int Offset;
 
         public Pagination()
         {
-            ItemCountPerPage = 16;
+            ItemCountPerPage = 20;
             Offset = 0;
+            TotalPages = 1;
         }
 
         public int GetPageCount(int TotalItems)
         {
-            PageCount = TotalItems / ItemCountPerPage;
+            TotalPages = TotalItems / ItemCountPerPage;
             //To handle 1 backward page as page one will have all the records 
-            return PageCount;
+            return TotalPages;
         }
 
         public int GetOffsetNumber(int? PageNumber)

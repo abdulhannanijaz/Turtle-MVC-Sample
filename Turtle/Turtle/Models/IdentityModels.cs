@@ -20,8 +20,9 @@ namespace Turtle.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //replace default string with the string of my user database 
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("IdentityDbContext", throwIfV1Schema: false)
         {
         }
 
